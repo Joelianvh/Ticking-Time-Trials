@@ -632,22 +632,22 @@ console.log(wireNummerD + " Dit is wireNummer D nu")
 let wireCountDown = 4
 
 function slot1wiresCheck(){
-  if (slot1img.src = "images/zwartdraad.png")
+  if (slot1.textcontent == "A")
   {
     console.log("slot 1 = A")
     wireCountDown = wireCountDown - 1
     slot1img.src = "images/zwartdraad_knip.png"
 
-  } else if (slot1img.src = "images/groendraad.png" && wireCountDown == 3){
+  } else if (slot1.textcontent == "B" && wireCountDown == 3){
     console.log("slot 1 = B")
     wireCountDown = wireCountDown - 1
     slot1img.src = "images/groendraad_knip.png"
-  } else if (slot1img.src = "images/rooddraad.png" && wireCountDown == 2 ){
+  } else if (slot1.textcontent == "C" && wireCountDown == 2 ){
     console.log("slot 1 = C")
     wireCountDown = wireCountDown - 1
     slot1img.src = "images/rooddraad_knip.png"
   }
-    else if (slot1img.src = "images/blauwdraad.png" && wireCountDown == 1 ){
+    else if (slot1.textcontent == "D" && wireCountDown == 1 ){
     console.log("slot 1 = D")
     wireCountDown = wireCountDown - 1
     slot1img.src = "images/blauwdraad_knip.png"
@@ -658,22 +658,22 @@ function slot1wiresCheck(){
 }
 
 function slot2wiresCheck(){
-  if (slot2img.src = "images/blauwdraad.png" )
+  if (slot2.textcontent == "A" )
   {
     console.log("slot 2 = A")
     wireCountDown = wireCountDown - 1
     slot2img.src = "images/blauwdraad_knip.png"
 
-  } else if (slot2img.src = "images/rooddraad.png" && wireCountDown == 3){
+  } else if (slot2.textcontent == "B" && wireCountDown == 3){
     console.log("slot 2 = B")
     wireCountDown = wireCountDown - 1
     slot2img.src = "images/rooddraad_knip.png"
-  } else if (slot2img.src = "images/groendraad.png" && wireCountDown == 2 ){
+  } else if (slot2.textcontent == "C" && wireCountDown == 2 ){
     console.log("slot 2 = C")
     wireCountDown = wireCountDown - 1
     slot2img.src = "images/groendraad_knip.png"
   }
-    else if (slot2img.src = "images/zwartdraad.png" && wireCountDown == 1 ){
+    else if (slot2.textcontent == "D" && wireCountDown == 1 ){
     console.log("slot 2 = D")
     wireCountDown = wireCountDown - 1
     slot2img.src = "images/zwartdraad_knip.png"
@@ -685,21 +685,21 @@ function slot2wiresCheck(){
 
 
 function slot3wiresCheck(){
-  if (slot3img.src = "images/rooddraad.png")
+  if (slot3.textcontent == "A")
   {
     console.log("slot 3 = A")
     wireCountDown = wireCountDown - 1
     slot3img.src = "images/rooddraad_knip.png"
-  } else if (slot3img.src = "images/zwartdraad.png" && wireCountDown == 3){
+  } else if (slot3.textcontent == "B" && wireCountDown == 3){
     console.log("slot 3 = B")
     wireCountDown = wireCountDown - 1
     slot3img.src = "images/zwartdraad_knip.png"
-  } else if (slot3img.src = "images/blauwdraad.png" && wireCountDown == 2 ){
+  } else if (slot3.textcontent == "C" && wireCountDown == 2 ){
     console.log("slot 3 = C")
     wireCountDown = wireCountDown - 1
     slot3img.src = "images/blauwdraad_knip.png"
   }
-    else if (slot3img.src = "images/groendraad.png" && wireCountDown == 1 ){
+    else if (slot3.textcontent == "D" && wireCountDown == 1 ){
     console.log("slot 3 = D")
     wireCountDown = wireCountDown - 1
     slot3img.src = "images/groendraad_knip.png"
@@ -711,22 +711,22 @@ function slot3wiresCheck(){
 }
 
 function slot4wiresCheck(){
-  if (slot4img.src = "images/groendraad.png" )
+  if (slot4.textcontent == "A" )
   {
     console.log("slot 4 = A")
     wireCountDown = wireCountDown - 1
     slot4img.src = "images/groendraad_knip.png"
 
-  } else if (slot4img.src = "images/blauwdraad.png" && wireCountDown == 3){
+  } else if (slot4.textcontent == "B" && wireCountDown == 3){
     console.log("slot 4 = B")
     wireCountDown = wireCountDown - 1
     slot4img.src = "images/blauwdraad_knip.png"
-  } else if (slot4img.src = "images/zwartdraad.png" && wireCountDown == 2 ){
+  } else if (slot4.textcontent == "C" && wireCountDown == 2 ){
     console.log("slot 4 = C")
     wireCountDown = wireCountDown - 1
     slot4img.src = "images/zwartdraad_knip.png"
   }
-    else if (slot4img.src = "images/rooddraad.png" && wireCountDown == 1 ){
+    else if (slot4.textcontent == "D" && wireCountDown == 1 ){
     console.log("slot 4 = D")
     wireCountDown = wireCountDown - 1
     slot4img.src = "images/rooddraad_knip.png"
