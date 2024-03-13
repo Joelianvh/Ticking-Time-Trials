@@ -4,7 +4,7 @@ body{
     font-weight: 400;
     font-style: normal;
     background-color: rgb(58, 57, 57);
-
+   
     font-size: 1em;
 }
 h1{
@@ -13,7 +13,7 @@ width:fit-content;
 padding: 10px;
 }
 img{
-    width: 10%;
+    width: 2em;
 }
 .module1{
     display: flex;
@@ -226,9 +226,7 @@ button span {
 .hintmenu p{
     width: 30%;
 }
-.obstructModule{
-    display: none;
-}
+
 
 .groen{
     color: green;
@@ -242,4 +240,74 @@ button span {
 .zwart{
     color: #000000;
 }
+
+.arrayleft{
+    color:rgb(58, 57, 57); ;
+}
+
 /* /////////////////////////////////////Wires//////////////////////// */
+/* /////////////////////////////////////Detonator//////////////////////// */
+.module3{
+    border: #000000 solid 0.3em;
+    width: 23vh;
+    height: 20vh;
+    display: flex;
+    align-items: center;
+
+}
+
+.detonator {
+    display: flex;
+    border: #000000 solid 0.1em;
+    border-radius: 6em;
+    width: 16vh;
+    height: 16vh;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.detonator:hover{
+    transform: scale(1.05)
+}
+
+.detonatorText{
+    font-size: 1.5em;
+
+}
+.stroke {
+    width: 5vh;
+    height: 18vh;
+    border: #000000 solid 0.2em;
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+
+/* kleuren voor detonatorknop */
+
+.achtergrondRood{
+    background-color: red;
+    color: #000000;
+}
+.achtergrondBlauw{
+    background-color: blue;
+    color: white;
+}
+.achtergrondWit{
+    background-color: white;
+    color: black;
+}
+.achtergrondZwart{
+    background-color:black;
+    color: white;
+}
+
+.achtergrondGroen{
+    background-color: green;
+}
+/* /////////////////////////////////////Detonator//////////////////////// */
+
+.obstructModule{
+    display: none;
+}

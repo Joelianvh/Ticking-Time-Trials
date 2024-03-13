@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../test"
+		},
+		{
+			"path": "../Lampje Bouwstenen"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "TTT"
+	}
+}

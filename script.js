@@ -1,8 +1,11 @@
 const startKnop = document.querySelector("img")
 const EndTimer = document.querySelector("h1")
 let bombTimeLeft = document.querySelector("h1")
-let timeLeft = 600 /* Tijd in seconden voor de timer */
+let timeLeft = 300 /* Tijd in seconden voor de timer */
 let module2 = document.querySelector(".module2")
+let module1 = document.querySelector(".module1")
+let module3 = document.querySelector(".module3")
+
 
 function bombTimer(){
     let minutes = Math.floor(timeLeft / 60)
@@ -17,41 +20,47 @@ function bombTimer(){
     }
     bombTimeLeft.textContent = (minutes) + ":" + (seconds)
 }
+
+
 function startcountdown(){
     bombTimer()
 
     const tijdsInterval = setInterval(() => {
         timeLeft--
         bombTimer()
+        timeCheck()
 /*         console.log(timeLeft) */ /* Dit is om de tijd left te zien in de console */
 
-        if (timeLeft <= 0) {
+        if (timeLeft <= 0 || AttemptsLeft == 0 ) {
             clearInterval(tijdsInterval)
-            bombTimeLeft.textContent == "00:00"
+            /* bombTimeLeft.textContent == "00:00" */
             bodyElement.classList.add("kaboom")
-            bombTimeLeft.replaceWith(EndTimer).textContent = "00:00"
-          
+            obstructGame()
+            /* bombTimeLeft.replaceWith(EndTimer).textContent = "00:00" */
+            let ExplosionSound = new Audio("audio/audio_boom.mp3")
+            ExplosionSound.play()
         }
     }, 1000)
 }
 
-let module1 = document.querySelector(".module1")
+
 
 function UNobstructGame(){
   module1.classList.remove("obstructModule")
 }
 function obstructGame(){
   module1.classList.add("obstructModule")
+  module2.classList.add("obstructModule")
+  module3.classList.add("obstructModule")
 }
 
 startKnop.addEventListener("click", startcountdown) /* de start knop die de bovenste fucnties aanzetten*/
 startKnop.addEventListener("click", UNobstructGame)
 
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////// Module 1 //////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
 
-/* Oplossing nummer invoer */
-/* const oplossing = (Math.ceil(1000 + Math.random() * 9000))
-console.log(oplossing)
- */
 const Geheimnummer1 = Math.ceil(Math.random()*9)
 const Geheimnummer2 = Math.ceil(Math.random()*9)
 const Geheimnummer3 = Math.ceil(Math.random()*9)
@@ -59,7 +68,6 @@ const Geheimnummer4 = Math.ceil(Math.random()*9) /* als je *10 doet dan kan het 
 
 const oplossing = `${Geheimnummer1}${Geheimnummer2}${Geheimnummer3}${Geheimnummer4}`
 
-/* console.log(Geheimnummer1) */
 console.log("De geheime code is: " + oplossing)
 
 
@@ -430,7 +438,8 @@ if (AttemptsLeft == 9) {
   feedback9_3.replaceWith(invoer3Clone)
   feedback9_4.replaceWith(invoer4Clone)
 } else if (AttemptsLeft == 0){
-  console.log("KABOOM")
+  console.log("bloe")
+  
 }
 /* feedbackinvoer */
 
@@ -458,21 +467,12 @@ clearinvoer.addEventListener("click", clearInvoer)
 /* boomboomscherm requirements */
 let bodyElement = document.querySelector("body")
 
-console.log(AttemptsLeft)
+console.log(AttemptsLeft + " Attempts left")
 
-function KABOOM(){
-if(AttemptsLeft == 0){
-  bodyElement.classList.add("kaboom")
-  obstructGame()
-  console.log(AttemptsLeft)
-  EndTimer.textContent = "00:00"
-  bombTimeLeft.replaceWith(EndTimer)
-}
-}
+
 
 
 sumbit.addEventListener("click", reset )
-sumbit.addEventListener("click", KABOOM )
 numPad1.addEventListener("click", nummerinvoer1)
 numPad2.addEventListener("click", nummerinvoer2)
 numPad3.addEventListener("click", nummerinvoer3)
@@ -483,6 +483,10 @@ numPad7.addEventListener("click", nummerinvoer7)
 numPad8.addEventListener("click", nummerinvoer8)
 numPad9.addEventListener("click", nummerinvoer9)
 numPad0.addEventListener("click", nummerinvoer0)
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////// Module 1 //////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////// Module 2 //////////////////////////////////////////////// */
@@ -514,7 +518,6 @@ function generateRandomNumber() {
   const wireNummers = [1, 2, 3, 4];
   
   const volgOrdewireNummers = wireNummers.sort(() => Math.random() - 0.5);
-  console.log(volgOrdewireNummers)
 
   wireNummerA = volgOrdewireNummers.slice(0, 1)
   wireNummerB = volgOrdewireNummers.slice(1, 2)
@@ -621,142 +624,318 @@ als rood als laatste is, knip deze ook als laatste
 generateRandomNumber()
 
 
-console.log(wireNummerA + " Dit is wireNummer A nu")
-console.log(wireNummerB + " Dit is wireNummer B nu")
-console.log(wireNummerC + " Dit is wireNummer C nu")
-console.log(wireNummerD + " Dit is wireNummer D nu")
+
 
 
 /* /////////////////////////////////// Wire Check////////////////////////////////// */
 
 let wireCountDown = 4
-
 function slot1wiresCheck(){
-  if (slot1.textcontent == "A")
+  if (slot1.textContent == "A")
   {
-    console.log("slot 1 = A")
+
     wireCountDown = wireCountDown - 1
     slot1img.src = "images/zwartdraad_knip.png"
+    completeWiresCheck()
+  } else if (slot1.textContent == "B" && wireCountDown == 3){
 
-  } else if (slot1.textcontent == "B" && wireCountDown == 3){
-    console.log("slot 1 = B")
     wireCountDown = wireCountDown - 1
     slot1img.src = "images/groendraad_knip.png"
-  } else if (slot1.textcontent == "C" && wireCountDown == 2 ){
-    console.log("slot 1 = C")
+    completeWiresCheck()
+  } else if (slot1.textContent == "C" && wireCountDown == 2 ){
+
     wireCountDown = wireCountDown - 1
     slot1img.src = "images/rooddraad_knip.png"
+    completeWiresCheck()
   }
-    else if (slot1.textcontent == "D" && wireCountDown == 1 ){
-    console.log("slot 1 = D")
+    else if (slot1.textContent == "D" && wireCountDown == 1 ){
+
     wireCountDown = wireCountDown - 1
     slot1img.src = "images/blauwdraad_knip.png"
+    completeWiresCheck()
     }
   else{
-    console.log("KABOOM")
+    AttemptsLeft = 0
   }
 }
 
 function slot2wiresCheck(){
-  if (slot2.textcontent == "A" )
+  if (slot2.textContent == "A" )
   {
-    console.log("slot 2 = A")
+
     wireCountDown = wireCountDown - 1
     slot2img.src = "images/blauwdraad_knip.png"
+    completeWiresCheck()
+  } else if (slot2.textContent == "B" && wireCountDown == 3){
 
-  } else if (slot2.textcontent == "B" && wireCountDown == 3){
-    console.log("slot 2 = B")
     wireCountDown = wireCountDown - 1
     slot2img.src = "images/rooddraad_knip.png"
-  } else if (slot2.textcontent == "C" && wireCountDown == 2 ){
-    console.log("slot 2 = C")
+    completeWiresCheck()
+  } else if (slot2.textContent == "C" && wireCountDown == 2 ){
+
     wireCountDown = wireCountDown - 1
     slot2img.src = "images/groendraad_knip.png"
+    completeWiresCheck()
   }
-    else if (slot2.textcontent == "D" && wireCountDown == 1 ){
-    console.log("slot 2 = D")
+    else if (slot2.textContent == "D" && wireCountDown == 1 ){
+
     wireCountDown = wireCountDown - 1
     slot2img.src = "images/zwartdraad_knip.png"
+    completeWiresCheck()
     }
   else{
-    console.log("KABOOM")
+    AttemptsLeft = 0
+
   }
 }
 
 
 function slot3wiresCheck(){
-  if (slot3.textcontent == "A")
+  if (slot3.textContent == "A")
   {
-    console.log("slot 3 = A")
+
     wireCountDown = wireCountDown - 1
     slot3img.src = "images/rooddraad_knip.png"
-  } else if (slot3.textcontent == "B" && wireCountDown == 3){
-    console.log("slot 3 = B")
+    completeWiresCheck()
+  } else if (slot3.textContent == "B" && wireCountDown == 3){
+
     wireCountDown = wireCountDown - 1
     slot3img.src = "images/zwartdraad_knip.png"
-  } else if (slot3.textcontent == "C" && wireCountDown == 2 ){
-    console.log("slot 3 = C")
+    completeWiresCheck()
+  } else if (slot3.textContent =="C" && wireCountDown == 2 ){
+
     wireCountDown = wireCountDown - 1
     slot3img.src = "images/blauwdraad_knip.png"
+    completeWiresCheck()
   }
-    else if (slot3.textcontent == "D" && wireCountDown == 1 ){
-    console.log("slot 3 = D")
+    else if (slot3.textContent == "D" && wireCountDown == 1 ){
+
     wireCountDown = wireCountDown - 1
     slot3img.src = "images/groendraad_knip.png"
+    completeWiresCheck()
     }
   else{
-    console.log("KABOOM")
+    AttemptsLeft = 0
+
   }
 
 }
 
 function slot4wiresCheck(){
-  if (slot4.textcontent == "A" )
+  if (slot4.textContent == "A" )
   {
-    console.log("slot 4 = A")
+
     wireCountDown = wireCountDown - 1
     slot4img.src = "images/groendraad_knip.png"
+    completeWiresCheck()
+  } else if (slot4.textContent == "B" && wireCountDown == 3){
 
-  } else if (slot4.textcontent == "B" && wireCountDown == 3){
-    console.log("slot 4 = B")
     wireCountDown = wireCountDown - 1
     slot4img.src = "images/blauwdraad_knip.png"
-  } else if (slot4.textcontent == "C" && wireCountDown == 2 ){
-    console.log("slot 4 = C")
+    completeWiresCheck()
+  } else if (slot4.textContent == "C" && wireCountDown == 2 ){
+
     wireCountDown = wireCountDown - 1
     slot4img.src = "images/zwartdraad_knip.png"
+    completeWiresCheck()
   }
-    else if (slot4.textcontent == "D" && wireCountDown == 1 ){
-    console.log("slot 4 = D")
+    else if (slot4.textContent == "D" && wireCountDown == 1 ){
+
     wireCountDown = wireCountDown - 1
     slot4img.src = "images/rooddraad_knip.png"
+    completeWiresCheck()
     }
   else{
-    console.log("KABOOM")
+    AttemptsLeft = 0
+
   }
 
 }
-/* /////////////////////////////////// Wire Check////////////////////////////////// */
+function wirecutSound(){
+  let wireCutSound = new Audio("audio/wirecut.mp3")
+  wireCutSound.play()
+}
 
+
+function completeWiresCheck(){
+  if(wireCountDown == 0){
+    console.log("Je hebt de draden opgelost!")
+    module3.classList.remove("obstructModule")
+  }
+}
 
 slot1.addEventListener("click", slot1wiresCheck)
 slot2.addEventListener("click", slot2wiresCheck)
 slot3.addEventListener("click", slot3wiresCheck)
 slot4.addEventListener("click", slot4wiresCheck)
 
+slot1.addEventListener("mousedown",wirecutSound)
+slot2.addEventListener("mousedown",wirecutSound)
+slot3.addEventListener("mousedown",wirecutSound)
+slot4.addEventListener("mousedown",wirecutSound)
 
+
+/* /////////////////////////////////// Wire Check////////////////////////////////// */
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////// Module 2 //////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////// Module 3 //////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+let detonator = document.querySelector(".detonator")
+let detonatorText = document.querySelector(".detonatorText")
+let stroke = document.querySelector(".stroke")
+let bombNumber = 0
+let releaseTimeNumber = 0
+
+
+if (wireNummerA == 1){
+  detonator.classList.add("achtergrondRood")
+  bombNumber = bombNumber + 0
+} else if (wireNummerA == 2){
+  detonator.classList.add("achtergrondBlauw")
+  bombNumber = bombNumber + 1
+} else if (wireNummerA == 3){
+  detonator.classList.add("achtergrondWit")
+  bombNumber = bombNumber - 1
+} else if (wireNummerA == 4){
+  detonator.classList.add("achtergrondZwart")
+  bombNumber = bombNumber + 2
+}
+
+
+if (wireNummerC == 1){
+  detonatorText.textContent = "press"
+  bombNumber = bombNumber - 1
+} else if (wireNummerC == 2){
+  detonatorText.textContent = "hold"
+  bombNumber = bombNumber + 2
+} else if (wireNummerC == 3){
+  detonatorText.textContent = "detonate"
+  bombNumber = bombNumber + 0
+} else if (wireNummerC == 4){
+  detonatorText.textContent = "don't"
+  bombNumber = bombNumber + 1
+}
+
+console.log(bombNumber + " is bombNumber")
+
+if (bombNumber < 0){
+  releaseTimeNumber = 1
+} else if (bombNumber == 2 || bombNumber == 4){
+  releaseTimeNumber = 5
+} else if (bombNumber == 1 || bombNumber == 6){
+  releaseTimeNumber = 2
+} else if (bombNumber == 0 || bombNumber == 3){
+  releaseTimeNumber = 9
+} else if (bombNumber == 5){
+  releaseTimeNumber = 7
+}
+
+console.log(releaseTimeNumber + " dit is release number")
+let pressCheck = false
+
+function timeCheck(){
+  let minutes1 = Math.floor(timeLeft / 60)
+const seconds1 = timeLeft % 60
+let secondsTientallen = Math.floor(seconds1 / 10)
+let secondsEnkeltallen = seconds1
+
+  if (seconds1 >= 50){
+    secondsEnkeltallen = seconds1 - 50
+
+  } else if ( seconds1 >= 40 && seconds1 < 50){
+    secondsEnkeltallen = seconds1 - 40
+
+  } else if ( seconds1 >= 30 && seconds1 < 40){
+    secondsEnkeltallen = seconds1 - 30
+
+  } else if ( seconds1 >= 20 && seconds1 < 30){
+    secondsEnkeltallen = seconds1 - 20
+
+  } else if ( seconds1 >= 10 && seconds1 < 20){
+    secondsEnkeltallen = seconds1 - 10
+   
+  } else if( seconds1 < 10){
+    secondsEnkeltallen = seconds1
+
+  }
+  console.log("min = " + minutes1)
+  console.log("seconde = " + secondsEnkeltallen)
+  console.log("tientallen = " + secondsTientallen)
+
+
+  
+  spacebarDown(minutes1, secondsEnkeltallen, secondsTientallen)
+  
+}
+timeCheck()
+
+
+/* OM DIT TE FIXEN GEBRUIK && STATEMENT */
+function spacebarDown(minutes1, secondsEnkeltallen, secondsTientallen){
+    if((releaseTimeNumber === minutes1 || releaseTimeNumber === secondsEnkeltallen || releaseTimeNumber === secondsTientallen ) && pressCheck === true){
+      console.log("Je hebt de bomb ontmantelt!")
+      bodyElement.classList.add("achtergrondGroen")
+    } else if (pressCheck === true) /* (releaseTimeNumber === minutes1 || releaseTimeNumber === secondsEnkeltallen || releaseTimeNumber === secondsTientallen) */{
+      AttemptsLeft = 0
+      console.log("Doeidoei")
+    }
+  }
+ /*  detonator.addEventListener("mouseup", mouseUp) */
+  
+  function SpacebarPress(event){
+    if(event.keyCode == 32){
+      console.log("spacebar press")
+      pressCheck = true
+      spacebarDown()
+    }
+  }
+  
+  
+  document.addEventListener("keyup", SpacebarPress)
+
+
+
+function mouseDown(){
+  console.log("spacebardown")
+  if (wireNummerB == 1){
+    stroke.classList.add("achtergrondRood")
+    bombNumber = bombNumber + 2
+  } else if (wireNummerB == 2){
+    stroke.classList.add("achtergrondBlauw")
+    bombNumber = bombNumber + 0
+  } else if (wireNummerB == 3){
+    stroke.classList.add("achtergrondWit")
+    bombNumber = bombNumber + 1
+  } else if (wireNummerB == 4){
+    stroke.classList.add("achtergrondZwart")
+    bombNumber = bombNumber - 1
+  }
+
+}
+
+
+detonator.addEventListener("mousedown", mouseDown)
+startKnop.addEventListener("click", timeCheck)
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+/* //////////////////////////////////////////////// Module 3 //////////////////////////////////////////////// */
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
 
 /* Cheat menu */
 const h2 = document.querySelector("h2")
 function cheat(){
   module2.classList.remove("obstructModule")
   module1.classList.remove("obstructModule")
+  module3.classList.remove("obstructModule")
   
 }
 
 h2.addEventListener("click", cheat)
 /* Cheat menu */
-
-/* //////////////////////////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////// Module 2 //////////////////////////////////////////////// */
-/* //////////////////////////////////////////////////////////////////////////////////////////////// */
