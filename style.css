@@ -3,85 +3,161 @@ body{
     font-family: "moby", sans-serif;
     font-weight: 400;
     font-style: normal;
-    background-color: rgb(58, 57, 57);
-   
+    background-color: rgb(75, 55, 28);
     font-size: 1em;
+    margin-top: 1vh;
 }
+
+
+
 h1{
-border: double black 0.2rem;
-width:fit-content;
-padding: 10px;
+    border: double gray 0.2rem;
+    margin: 0;
+    padding: 0.3rem;
+    font-size: 1em;
+    height: fit-content;
+    color: red;
+    background-color: #000000;
 }
-img{
-    width: 2em;
+body div.module1 img{
+    width: 1.4em;
+
+}
+body div.timer p{
+    border: #000000 ridge   3px;
+
+    margin-bottom: 0;
+    margin-top: 0;
+    font-size: 1.3em;
+    padding: 5px;
+}
+
+.back{
+    margin-left: 20vw;    
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: rgb(58, 57, 57);
+}
+.next{
+    height: fit-content;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: rgb(58, 57, 57);
+    
+}
+
+.disabledButton{
+    background-color:rgb(122, 121, 121) ;
+    border: rgb(167, 167, 167) inset 2px;
+    cursor: not-allowed;
+
+}
+
+
+.timer{
+    display: flex;
+
+}
+.timer img{
+    width: 40vw;
+    border: solid white 1px;
 }
 .module1{
     display: flex;
-    width: 100vw;
+    width: auto;
+    margin-top: 5vh;
 
 }
 .fullkeypad{
-    width: 30%;
-
-    border: solid black 0.2rem;
+    width: 30vw;
+    margin: 0;
+    border: outset black 0.2rem;
+    height: auto;
+    background-color: rgb(55, 54, 54);
+    border-radius: 0.3em;
 }
+
+.submit, .clear{
+    width: 6vw;
+    height: 6vh;
+    display: flex;
+    font-size: 0.6em;
+    text-align: center;
+    margin: 4vh;
+    margin-left: 0;
+    
+}
+
 .invoerbox{
     
     justify-content: center;   
-    width: 20%;
-    border: double black 0.1rem;
+    width: 25vw;
+    height: 10vh;
+    border: outset black 0.1rem;
     margin: auto;
-    height: fit-content;
-    background-color: rgb(115, 116, 116);
+    background-color: rgb(110, 148, 33);
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    padding: 1vh;
+
 }
 .invoerveld{
     display: flex;
     justify-content: space-around;
     
 }
+.Invoer1, .Invoer2, .Invoer3, .Invoer4{
+    
+    font-size: 1em;
+}
 
 .vormnumpad{
     display: flex;
+    border: #000000 1px inset;
+    width: 25vw;
+    margin: auto;
+    background-color: rgb(100, 100, 100);
 }
 .numpad{
     display: table-row;
     flex-direction: column;
-    margin: auto;
+    margin: 3px;
     justify-content: center;
 }
 
-h2{
+/* h2{
     font-family: "moby", sans-serif;
-font-weight: 400;
-font-style: normal;
+    font-weight: 400;
+    font-style: normal;
 
-border: double black 0.3rem;
-width:fit-content;
-}
+    border: double black 0.3rem;
+    width:fit-content;
+} */
 
 
-.toprow, .middlerow, .bottomrow{
+.toprow, .middlerow, .bottomrow, .numPad0box{
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin: 0;
-    width: 130%;
+    width: 16vw;
 }
-.numPad0box{
+/* .numPad0box{
     display: flex;
     justify-content: center;
     width: 130%;
-}
+} */
 .buttons{
-    margin: 0;
+    margin: auto;
+    width: auto;
+
 }
 
 
 
 
-.kaboom{
- background-color: red;
-}
+
 
 /* nummer hoversstates */
 .numPad1:hover{
@@ -139,13 +215,14 @@ section p{
 .feedbacklog{
     display: flex;
     flex-direction: column;
-    border: solid black 0.2rem;
+    border: outset black 0.2rem;
     width: 108px;
     height: fit-content;
     text-align: center;
     letter-spacing: 5px;
-    font-size: 1.5em;
-    margin-left: 3%;
+    font-size: 1em;
+    margin-left: 1vw;
+    background-color: rgb(156, 156, 156);
 }
 .feedbacklog div{
     display: flex;
@@ -153,78 +230,63 @@ section p{
     margin: auto;
 }
 
-button {
-  appearance: none;
-  background-color: #FFFFFF;
-  border-width: 0;
-  box-sizing: border-box;
-  color: #000000;
-  cursor: pointer;
-  display: inline-block;
-  font-family: Clarkson,Helvetica,sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 1em;
-  margin: 0;
-  opacity: 1;
-  outline: 0;
-  padding: 1.5em 2.2em;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  text-rendering: geometricprecision;
-  text-transform: uppercase;
-  transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1),background-color 100ms cubic-bezier(.694, 0, 0.335, 1),color 100ms cubic-bezier(.694, 0, 0.335, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  white-space: nowrap;
-  transform: scale(0.5);
+
+
+/* instructie module 1*/
+div section{
+    text-align: center;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: outset black 0.2rem;
+    margin-left: 1vw;
+    background-color: rgb(156, 156, 156);
+}
+
+div section:nth-child(3) p{
+    width: 25vw;
+    font-size: 0.5em;
+    text-align: center;
 
 }
 
-button:before {
-  animation: opacityFallbackOut .5s step-end forwards;
-  backface-visibility: hidden;
-  background-color: #EBEBEB;
-  clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
-  content: "";
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  transform: translateZ(0);
-  transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
-  width: 100%;
+h2{
+    font-size: 0.7em;
+    margin-top: 1vh;
 }
 
-button:hover:before {
-  animation: opacityFallbackIn 0s step-start forwards;
-  clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+ul{
+    padding: 0;
+    margin: 2px;
 }
-
-button:after {
-  background-color: #FFFFFF;
-}
-
-button span {
-  z-index: 1;
-  position: relative;
+ul li{
+    font-size: 0.5em;
+    list-style: none;
+    padding: 2px;
 }
 
 
 /* /////////////////////////////////////Wires//////////////////////// */
 
 .slot1img, .slot2img, .slot3img, .slot4img{
-    width: 30%;
+    width: 30vw;
+    border: inset black 1px;
+    height: 23px;
+    padding: 0.4rem;
+    background-color: beige;
 }
 .module2{
     display: flex;
+/*     border: #000000 outset 1px; */
 }
-.hintmenu p{
-    width: 30%;
+.hintmenu {
+    border: #000000 outset 2px;
+    width: auto;
+    font-size: 0.5em;
+    background-color:rgb(156, 156, 156) ;
+    margin-left: 5vw;
+    
 }
 
 
@@ -240,50 +302,115 @@ button span {
 .zwart{
     color: #000000;
 }
+.wit{
+    color: white;
+}
 
 .arrayleft{
-    color:rgb(58, 57, 57); ;
+    color:rgb(58, 57, 57);
+    border: outset black 2px;
+    margin: 2px;
+    background-color: gray;
+    height: auto;
+    
+}
+.arrayleft div{
+    display: flex;
+    align-items: center;
+}
+
+.slotText{
+
+    font-size: 0.5em;
+    
+}
+.slot1, .slot2, .slot3, .slot4{
+    display: flex;
+    margin-top: 3vh;
+    color: gray;
+}
+
+h3{
+    text-align: center;
+    margin: 0vh;
+    font-size: 1em;
 }
 
 /* /////////////////////////////////////Wires//////////////////////// */
 /* /////////////////////////////////////Detonator//////////////////////// */
 .module3{
-    border: #000000 solid 0.3em;
-    width: 23vh;
-    height: 20vh;
+    border: #000000 solid 1px;
+    width: auto;
+    height: 80vh;
     display: flex;
     align-items: center;
 
 }
-
-.detonator {
+.detonator{
     display: flex;
-    border: #000000 solid 0.1em;
+    align-items: center;
+    border: #000000 outset 2px;
+    padding: 0.5rem;
+    background-color: gray;
+}
+.detonateButton {
+    display: flex;
+    border: #000000 inset 0.2em;
     border-radius: 6em;
-    width: 16vh;
-    height: 16vh;
+    width: 34vh;
+    height: 34vh;
     justify-content: center;
     align-items: center;
     margin-left: 1%;
     margin-right: 1%;
 }
-.detonator:hover{
-    transform: scale(1.05)
+.detonateButton:hover{
+    transform: scale(1.05);
+    border-style: outset;
 }
 
 .detonatorText{
-    font-size: 1.5em;
+    font-size: 0.9em;
 
 }
 .stroke {
     width: 5vh;
-    height: 18vh;
-    border: #000000 solid 0.2em;
+    height: 34vh;
+    border: #000000 inset 0.2em;
     margin-left: 1%;
     margin-right: 1%;
+    background-color: rgb(92, 91, 91);
 }
 
+.detonatorManual{
+    border: #000000 outset 2px;
+    font-size: 0.1em;
+    width: 55vw;
+    height: 75vh;
+    margin-left: 2vw;
+    background-color: gray;
+}
 
+.knopActies{
+    display: flex;
+    margin-top: 1vh;
+    border: inset black 2px;
+    background-color: rgb(105, 104, 104);
+}
+.knopActies li{
+    text-align: center;
+}
+
+.detonatorManual div{
+    text-align: center;
+    list-style: none;
+    display: flex;
+    border: inset black 2px;
+    background-color: rgb(105, 104, 104);
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+
+}
 /* kleuren voor detonatorknop */
 
 .achtergrondRood{
@@ -310,4 +437,7 @@ button span {
 
 .obstructModule{
     display: none;
+}
+.kaboom{
+ background-color: red;
 }

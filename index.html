@@ -10,10 +10,14 @@
 </head>
 
 <body>
-    <div>
+    <div class="timer">
         <h1>05:00</h1>
+        <button class="startbutton">Start bomb</button>
+        <button class="back disabledButton"> < </button>
+        <p class="moduleCounter">1/3</p>
+        <button class="next disabledButton"> > </button>
     </div>
-    <img src="images/Startknop.png" alt="">
+
 
     <div class="module1 obstructModule">
         <div class="fullkeypad">
@@ -47,81 +51,135 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <button>submit</button>
+                    <button class="submit">submit</button>
                     <button class="clear">clear</button>
                 </div>
             </div>
         </div>
 
-        <div class="feedback">
-            <section class="feedbacklog">
-                <div class="feedback1">
-                    <div class="feed1_1">.</div>
-                    <div class="feed1_2">.</div>
-                    <div class="feed1_3">.</div>
-                    <div class="feed1_4">.</div>
-                </div>
-                <div class="feedback2">
-                    <div class="feed2_1">.</div>
-                    <div class="feed2_2">.</div>
-                    <div class="feed2_3">.</div>
-                    <div class="feed2_4">.</div>
-                </div>
-                <div class="feedback3">
-                    <div class="feed3_1">.</div>
-                    <div class="feed3_2">.</div>
-                    <div class="feed3_3">.</div>
-                    <div class="feed3_4">.</div>
-                </div>
-                <div class="feedback4">
-                    <div class="feed4_1">.</div>
-                    <div class="feed4_2">.</div>
-                    <div class="feed4_3">.</div>
-                    <div class="feed4_4">.</div>
-                </div>
-                <div class="feedback5">
-                    <div class="feed5_1">.</div>
-                    <div class="feed5_2">.</div>
-                    <div class="feed5_3">.</div>
-                    <div class="feed5_4">.</div>
-                </div>
-                <div class="feedback6">
-                    <div class="feed6_1">.</div>
-                    <div class="feed6_2">.</div>
-                    <div class="feed6_3">.</div>
-                    <div class="feed6_4">.</div>
-                </div>
-                <div class="feedback7">
-                    <div class="feed7_1">.</div>
-                    <div class="feed7_2">.</div>
-                    <div class="feed7_3">.</div>
-                    <div class="feed7_4">.</div>
-                </div>
-                <div class="feedback8">
-                    <div class="feed8_1">.</div>
-                    <div class="feed8_2">.</div>
-                    <div class="feed8_3">.</div>
-                    <div class="feed8_4">.</div>
-                </div>
-                <div class="feedback9">
-                    <div class="feed9_1">.</div>
-                    <div class="feed9_2">.</div>
-                    <div class="feed9_3">.</div>
-                    <div class="feed9_4">.</div>
-                </div>
-            </section>
-        </div>
+
+        <section class="feedbacklog">
+            <div class="feedback1">
+                <div class="feed1_1">.</div>
+                <div class="feed1_2">.</div>
+                <div class="feed1_3">.</div>
+                <div class="feed1_4">.</div>
+            </div>
+            <div class="feedback2">
+                <div class="feed2_1">.</div>
+                <div class="feed2_2">.</div>
+                <div class="feed2_3">.</div>
+                <div class="feed2_4">.</div>
+            </div>
+            <div class="feedback3">
+                <div class="feed3_1">.</div>
+                <div class="feed3_2">.</div>
+                <div class="feed3_3">.</div>
+                <div class="feed3_4">.</div>
+            </div>
+            <div class="feedback4">
+                <div class="feed4_1">.</div>
+                <div class="feed4_2">.</div>
+                <div class="feed4_3">.</div>
+                <div class="feed4_4">.</div>
+            </div>
+            <div class="feedback5">
+                <div class="feed5_1">.</div>
+                <div class="feed5_2">.</div>
+                <div class="feed5_3">.</div>
+                <div class="feed5_4">.</div>
+            </div>
+            <div class="feedback6">
+                <div class="feed6_1">.</div>
+                <div class="feed6_2">.</div>
+                <div class="feed6_3">.</div>
+                <div class="feed6_4">.</div>
+            </div>
+            <div class="feedback7">
+                <div class="feed7_1">.</div>
+                <div class="feed7_2">.</div>
+                <div class="feed7_3">.</div>
+                <div class="feed7_4">.</div>
+            </div>
+            <div class="feedback8">
+                <div class="feed8_1">.</div>
+                <div class="feed8_2">.</div>
+                <div class="feed8_3">.</div>
+                <div class="feed8_4">.</div>
+            </div>
+            <div class="feedback9">
+                <div class="feed9_1">.</div>
+                <div class="feed9_2">.</div>
+                <div class="feed9_3">.</div>
+                <div class="feed9_4">.</div>
+            </div>
+        </section>
+        <section>
+            <h2>Code guesser - module 1</h2>
+            <p>
+                je hebt <span class="AttemptAantal">10</span> pogingen om een code in te voeren. na elke poging krijg je te zien:
+            </p>
+            <ul>
+                <li class="red">rood = fout nummer</li>
+                <li class="orange">oranje = correct nummer maar niet op de goeie positie</li>
+                <li class="green">groen = correct nummer op de correcte positie</li>
+            </ul>
+        </section>
     </div>
     <div class="module2 obstructModule">
 
         <div class="arrayleft">
-            <p class="slot1">.</p>
-            <p class="slot2">.</p>
-            <p class="slot3">.</p>
-            <p class="slot4">.</p>
+            <div>
+                <p class="slot1"></p> <p class="slotText">slot1</p>
+            </div>
+            <div>
+                <p class="slot2"></p> <p class="slotText">slot2</p>
+            </div>
+            <div>
+                <p class="slot3"></p> <p class="slotText">slot3</p>
+            </div>
+            <div>
+                <p class="slot4"></p> <p class="slotText">slot4</p>
+            </div>
+
         </div>
         <div class="hintmenu">
-<!--             <p>
+            <h3><strong class="blauw">blauw</strong></h3>
+            <ol>
+              <li>Als laatste knippen.</li>
+              <li>Eerst doorknippen.</li>
+              <li>Derde knippen.</li>
+              <li>Tweede doorknippen.</li>
+            </ol>
+            
+            <h3><strong class="groen">groen</strong></h3>
+            <ol>
+              <li>Tweede doorknippen.</li>
+              <li>Op een na laatste knippen.</li>
+              <li>Als laatste knippen.</li>
+              <li>Doorknippen.</li>
+            </ol>
+            
+            <h3><strong class="rood">Rood</strong></h3>
+            <ol>
+              <li>Op een na laatste knippen.</li>
+              <li>Tweede doorknippen.</li>
+              <li>Doorknippen.</li>
+              <li>Ook als laatste knippen.</li>
+            </ol>
+            
+            <h3><strong class="zwart">zwart</strong></h3>
+            <ol>
+              <li>Eerst doorknippen.</li>
+              <li>Als laatste knippen.</li>
+              <li>Tweede doorknippen.</li>
+              <li>Derde knippen.</li>
+            </ol>
+
+            
+
+
+<!--                         <p>
                 Als <strong class="zwart">zwart</strong> op slot 1 zit, knip je die eerst door.
                 Als <strong class="blauw">blauw</strong>  op slot 2 zit knip je die eerst door.
                 Als <strong class="rood">rood</strong> op slot 3 zit knip je deze.
@@ -148,15 +206,71 @@
             </p> -->
         </div>
     </div>
-
     <div class="module3 obstructModule">
         <div class="detonator">
-            <p class="detonatorText">Press</p>
+            <div class="detonateButton"> <p class="detonatorText">Press</p></div>
+           
+            <div class="stroke"></div>
         </div>
-        <div class="stroke"></div>
-    </div>
-    
-    <h2>HALLO</h2>
+
+        <div class="detonatorManual">
+            <h2>De ontsteker</h2>
+        
+            <p>Druk op deze knop en laat deze uiteindelijk los zodra je weet of de releasetijd gelijk is aan een nummer in de
+                bombtimer.</p>
+        
+            <h2>Instellingen:</h2>
+            <ul>
+                <li>Bombnummer begint op: 0</li>
+            </ul>
+        
+            <h2>Regels:</h2>
+            <ul>
+                <li>Als het bombnummer kleiner is dan 0, is de releasetijd 1.</li>
+                <li>Als het bombnummer gelijk is aan 2 of 4, is de releasetijd 5.</li>
+                <li>Als het bombnummer gelijk is aan 1 of 6, is de releasetijd 2.</li>
+                <li>Als het bombnummer gelijk is aan 0 of 3, is de releasetijd 9.</li>
+                <li>Als het bombnummer gelijk is aan 5, is de releasetijd 7.</li>
+            </ul>
+        
+            <h2>Knopacties:</h2>
+            <ul class="knopActies">
+                <li><strong class="rood">Rood</strong>
+                    <ul>
+                        <li>Stroke: bombnummer + 2</li>
+                        <li>Detonator: bombnummer + 0</li>
+                    </ul>
+                </li>
+                <li><strong class="blauw">Blauw</strong>
+                    <ul>
+                        <li>Stroke: bombnummer + 0</li>
+                        <li>Detonator: bombnummer + 1</li>
+                    </ul>
+                </li>
+                <li><strong class="wit">Wit</strong>
+                    <ul>
+                        <li>Stroke: bombnummer + 1</li>
+                        <li>Detonator: bombnummer - 1</li>
+                    </ul>
+                </li>
+                <li><strong class="zwart">Zwart</strong>
+                    <ul>
+                        <li>Stroke: bombnummer - 1</li>
+                        <li>Detonator: bombnummer + 2</li>
+                    </ul>
+                </li>
+
+            </ul>
+            <div>
+                <li><strong>"Press"</strong> bombnummer - 1</li>
+                <li><strong>"Hold"</strong> bombnummer + 2</li>
+                <li><strong>"Detonate"</strong> bombnummer + 0</li>
+                <li><strong>"Don't"</strong> bombnummer + 1</li>
+            </div>
+        </div>
+        </div>
+
+<!--     <h2>HALLO</h2> -->
     <script src="script.js"></script>
 
 </body>

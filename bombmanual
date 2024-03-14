@@ -29,31 +29,37 @@ als groen op slot 3 zit, als laatste knippen
 als rood als laatste is, knip deze ook als laatste
 
 
-de onsteker. deze knop moet je indrukken en uiteindelijk los laten zodra je weet of de 
-releasetime gelijk is aan een nummer in de bombtimer.
+De ontsteker: 
+- Druk op deze knop en laat deze uiteindelijk los zodra je weet of de releasetijd gelijk is aan een nummer in de bombtimer.
 
-bombnummer = 0
+Instellingen:
+- Bombnummer begint op: 0
 
-stroke rood = + 2
-detonator rood = + 0
+Regels:
+- Als het bombnummer kleiner is dan 0, is de releasetijd 1.
+- Als het bombnummer gelijk is aan 2 of 4, is de releasetijd 5.
+- Als het bombnummer gelijk is aan 1 of 6, is de releasetijd 2.
+- Als het bombnummer gelijk is aan 0 of 3, is de releasetijd 9.
+- Als het bombnummer gelijk is aan 5, is de releasetijd 7.
 
-stroke blauw  = + 0
-detonator blauw = +1
+Knopacties:
+- Rode knop:
+  - Stroke: bombnummer + 2
+  - Detonator: bombnummer + 0
 
-stroke wit = + 1
-detonator wit = - 1
+- Blauwe knop:
+  - Stroke: bombnummer + 0
+  - Detonator: bombnummer + 1
 
+- Witte knop:
+  - Stroke: bombnummer + 1
+  - Detonator: bombnummer - 1
 
-stroke zwart = -1
-detonator zwart = +2
+- Zwarte knop:
+  - Stroke: bombnummer - 1
+  - Detonator: bombnummer + 2
 
-press = -1
-hold = +2
-detonate = +0
-don't = +1
-
-if bombnummer = <0 dan is releasetime 1
-if bombnummer = 2 of 4 dan is releasetime 5
-if bombnummer = 1 of 6 dan is releasetime 2
-if bombnummer = 0 of 3 dan is releasetime 9
-if bombnummer = 5 dan is releasetime 7 
+- "Press" actie: bombnummer - 1
+- "Hold" actie: bombnummer + 2
+- "Detonate" actie: bombnummer + 0
+- "Don't" actie: bombnummer + 1
