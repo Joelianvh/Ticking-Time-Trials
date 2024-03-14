@@ -899,41 +899,38 @@ if (wireNummerC == 1) {
 
 function SpacebarDown(event) {
   console.log("spacebardown")
-  if (event.keyCode == 32 && !isSpacebarDown){
+  if (event.keyCode == 32 && !isSpacebarDown) {
     isSpacebarDown = true
-  if (wireNummerB == 1) {
-    stroke.classList.add("achtergrondRood")
-    bombNumber = bombNumber + 2
-    console.log(bombNumber)
-  } else if (wireNummerB == 2) {     
-    stroke.classList.add("achtergrondBlauw")
-    bombNumber = bombNumber + 0
-    console.log(bombNumber)
-  } else if (wireNummerB == 3) {
-    stroke.classList.add("achtergrondWit")
-    bombNumber = bombNumber + 1
-    console.log(bombNumber)
-  } else if (wireNummerB == 4) {
-    stroke.classList.add("achtergrondZwart")
-    bombNumber = bombNumber - 1
-    console.log(bombNumber)
+    if (wireNummerB == 1) {
+      stroke.classList.add("achtergrondRood")
+      bombNumber = bombNumber + 2
+    } else if (wireNummerB == 2) {
+      stroke.classList.add("achtergrondBlauw")
+      bombNumber = bombNumber + 0
+    } else if (wireNummerB == 3) {
+      stroke.classList.add("achtergrondWit")
+      bombNumber = bombNumber + 1
+    } else if (wireNummerB == 4) {
+      stroke.classList.add("achtergrondZwart")
+      bombNumber = bombNumber - 1
+    }
+    console.log(bombNumber + " is bombNumber")
+
+
   }
-  console.log(bombNumber + " is bombNumber")
+  if (bombNumber < 0) {
+    releaseTimeNumber = 1
+  } else if (bombNumber == 2 || bombNumber == 4) {
+    releaseTimeNumber = 5
+  } else if (bombNumber == 1 || bombNumber == 6) {
+    releaseTimeNumber = 2
+  } else if (bombNumber == 0 || bombNumber == 3) {
+    releaseTimeNumber = 9
+  } else if (bombNumber == 5) {
+    releaseTimeNumber = 7
+  }
 
-}
-if (bombNumber < 0) {
-  releaseTimeNumber = 1
-} else if (bombNumber == 2 || bombNumber == 4) {
-  releaseTimeNumber = 5
-} else if (bombNumber == 1 || bombNumber == 6) {
-  releaseTimeNumber = 2
-} else if (bombNumber == 0 || bombNumber == 3) {
-  releaseTimeNumber = 9
-} else if (bombNumber == 5) {
-  releaseTimeNumber = 7
-}
-
-console.log(releaseTimeNumber + " dit is release number")
+  console.log(releaseTimeNumber + " dit is release number")
 
 }
 
@@ -1018,7 +1015,7 @@ startKnop.addEventListener("click", timeCheck)
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
 
 /* Cheat menu */
-const h2 = document.querySelector("h2")
+/* const CHEAT = document.querySelector(".CHEAT")
 function cheat() {
   module2.classList.remove("obstructModule")
   module1.classList.remove("obstructModule")
@@ -1026,6 +1023,6 @@ function cheat() {
 
 }
 
-h2.addEventListener("click", cheat)
+CHEAT.addEventListener("click", cheat) */
 /* Cheat menu */
 
