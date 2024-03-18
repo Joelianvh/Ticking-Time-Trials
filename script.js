@@ -1,10 +1,31 @@
 const startKnop = document.querySelector(".startbutton")
 const EndTimer = document.querySelector("h1")
 let bombTimeLeft = document.querySelector("h1")
-let timeLeft = 300 /* Tijd in seconden voor de timer */
-let module2 = document.querySelector(".module2")
-let module1 = document.querySelector(".module1")
-let module3 = document.querySelector(".module3")
+let timeLeft
+const module2 = document.querySelector(".module2")
+const module1 = document.querySelector(".module1")
+const gameEnd = document.querySelector(".gameEnd")
+const Timer = document.querySelector(".timer")
+const startScreen = document.querySelector(".startscreen")
+let gameEndText = document.querySelector(".gameEnd h2")
+const minutes15 = document.querySelector(".minutes15")
+const minutes10 = document.querySelector(".minutes10")
+const minutes5 = document.querySelector(".minutes5")
+let TimeSelectButtons = document.querySelectorAll(".timeSelect button")
+
+TimeSelectButtons.forEach(function(button){
+  button.addEventListener("click", function(){
+    TimeSelectButtons.forEach(function(btn){
+      btn.classList.remove("selected")
+    })
+    this.classList.add("selected") /* de "This" is door chatgpt aangeboden als een oplossing en dit selecteerd de huidige "button" waarop geklickt is */
+    timeLeft = this.value /* Elke button heeft een value gekregen die wordt ingevuld bij de TimeLeft */
+    startKnop.classList.remove("obstructModule")
+  })
+})
+ /* Chat GPT heeft geholpen met het gebruiken van de forEach functie hierboven */ 
+ /* Ik heb geen specifieke prompt gebruikt maar eerst zelf proberen forEach te gebruiken en 
+ dit vervolgens in chatgpt gezet die een suggestie gaf om het te verbeteren en te laten werken */
 
 
 function bombTimer() {
@@ -24,38 +45,39 @@ function bombTimer() {
 
 function startcountdown() {
   bombTimer()
-
+  module1.classList.remove("obstructModule")
+  startKnop.classList.add("obstructModule")
+  Timer.classList.remove("obstructModule")
+  startScreen.classList.add("obstructModule")
   const tijdsInterval = setInterval(() => {
     timeLeft--
     bombTimer()
-    timeCheck()
-    /*         console.log(timeLeft) */ /* Dit is om de tijd left te zien in de console */
-
     if (timeLeft <= 0 || AttemptsLeft == 0) {
       clearInterval(tijdsInterval)
       /* bombTimeLeft.textContent == "00:00" */
       bodyElement.classList.add("kaboom")
       obstructGame()
+      gameEndText.textContent = "The bomb has exploded!"
+      gameEnd.classList.remove("obstructModule")
       /* bombTimeLeft.replaceWith(EndTimer).textContent = "00:00" */
       let ExplosionSound = new Audio("audio/audio_boom.mp3")
       ExplosionSound.play()
+    } else if( wireCountDown == 0){
+      clearInterval(tijdsInterval)
+      bodyElement.classList.add("achtergrondGroen")
+      gameEnd.classList.remove("obstructModule")
     }
   }, 1000)
 }
 
 
 
-function UNobstructGame() {
-  module1.classList.remove("obstructModule")
-}
 function obstructGame() {
   module1.classList.add("obstructModule")
   module2.classList.add("obstructModule")
-  module3.classList.add("obstructModule")
 }
 
 startKnop.addEventListener("click", startcountdown) /* de start knop die de bovenste fucnties aanzetten*/
-startKnop.addEventListener("click", UNobstructGame)
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////// Module 1 //////////////////////////////////////////////// */
@@ -248,17 +270,6 @@ let ingeving = invoer1.textContent + invoer2.textContent + invoer3.textContent +
 
 let AttemptsLeft = 10
 /* Feedback text declaration */
-
-const feedback1 = document.querySelector(".feedback1")
-const feedback2 = document.querySelector(".feedback2")
-const feedback3 = document.querySelector(".feedback3")
-const feedback4 = document.querySelector(".feedback4")
-const feedback5 = document.querySelector(".feedback5")
-const feedback6 = document.querySelector(".feedback6")
-const feedback7 = document.querySelector(".feedback7")
-const feedback8 = document.querySelector(".feedback8")
-const feedback9 = document.querySelector(".feedback9")
-
 let feedback1_1 = document.querySelector(".feed1_1")
 let feedback1_2 = document.querySelector(".feed1_2")
 let feedback1_3 = document.querySelector(".feed1_3")
@@ -312,10 +323,6 @@ const nextButton = document.querySelector(".next")
 let moduleCounter = document.querySelector(".moduleCounter")
 backButton.disabled = true
 nextButton.disabled = true
-
-
-
-
 
 function reset() {
 
@@ -395,21 +402,26 @@ function reset() {
     invoer2Clone.classList.add("obstructModule")
     invoer3Clone.classList.add("obstructModule")
     invoer4Clone.classList.add("obstructModule")
-
   } else {
     AttemptsLeft = AttemptsLeft - 1
-        let pogingText = document.querySelector(".AttemptAantal")
-        pogingText.textContent = AttemptsLeft
-        console.log(AttemptsLeft + " Attempts left")
+    let pogingText = document.querySelector(".AttemptAantal")
+    pogingText.textContent = AttemptsLeft
+    console.log(AttemptsLeft + " Attempts left")
+    invoer1.textContent = "."
+    invoer2.textContent = "."
+    invoer3.textContent = "."
+    invoer4.textContent = "."
+
+    invoer1.classList.remove("green", "orange", "red")
+    invoer2.classList.remove("green", "orange", "red")
+    invoer3.classList.remove("green", "orange", "red")
+    invoer4.classList.remove("green", "orange", "red")
   }
   /* /////////////////////////// */
   /* Attempt counter en oplossing */
   /* ////////////////////////// */
 
-
-
-
-
+ 
   /* ////////////////////////// */
   /* feedbackinvoer */
   /* ////////////////////////// */
@@ -469,65 +481,36 @@ function reset() {
 }
 
 /* ////////////////////Module switch//////////////////// */
-function nextModule() {
-  if (moduleCounter.textContent === "2/3") {
-    module2.classList.add("obstructModule")
-    module3.classList.remove("obstructModule")
-    nextButton.classList.add("disabledButton")
-    nextButton.disabled = true
-    moduleCounter.textContent = "3/3"
-    console.log("Moved to the next module (2/3 to 3/3)")
-  }
-  else if (moduleCounter.textContent === "1/3") {
+function nextModule(){
+  if(moduleCounter.textContent == "1/2"){
     module1.classList.add("obstructModule")
     module2.classList.remove("obstructModule")
-    console.log(moduleCounter)
-    if (wireCountDown === 0) {
-      nextButton.classList.remove("disabledButton")
-      nextButton.disabled = false
-    } else {
-      nextButton.classList.add("disabledButton")
-      nextButton.disabled = true
-    }
+    nextButton.classList.add("disabledButton")
+    nextButton.disabled = true
     backButton.classList.remove("disabledButton")
     backButton.disabled = false
-    moduleCounter.textContent = "2/3"
-    console.log(moduleCounter)
+    moduleCounter.textContent = "2/2"
   }
 }
 
-
-function previousModule() {
-  if (moduleCounter.textContent == "2/3") {
-    module2.classList.add("obstructModule")
+function previousModule(){
+  if (moduleCounter.textContent == "2/2"){
     module1.classList.remove("obstructModule")
+    module2.classList.add("obstructModule")
+    nextButton.classList.remove("disabledButton")
+    nextButton.disabled = false
     backButton.classList.add("disabledButton")
     backButton.disabled = true
-    nextButton.classList.remove("disabledButton")
-    nextButton.disabled = false
-    console.log(nextButton)
-    moduleCounter.textContent = "1/3"
-
-  } else if (moduleCounter.textContent == "3/3") {
-    module3.classList.add("obstructModule")
-    module2.classList.remove("obstructModule")
-    moduleCounter.textContent = "2/3"
-    nextButton.classList.remove("disabledButton")
-    nextButton.disabled = false
+    moduleCounter.textContent = "1/2"
   }
-
 }
-
-
 nextButton.addEventListener("click", nextModule)
 backButton.addEventListener("click", previousModule)
-
 /* ////////////////////Module switch//////////////////// */
-
-
 
 /* /////////////////////////// Clear invoer button /////////////////////////// */
 const clearinvoer = document.querySelector(".clear")
+
 function clearInvoer() {
   invoer1.textContent = "."
   invoer2.textContent = "."
@@ -538,25 +521,29 @@ function clearInvoer() {
   invoer2.classList.remove("green", "orange", "red")
   invoer3.classList.remove("green", "orange", "red")
   invoer4.classList.remove("green", "orange", "red")
-
 }
+
+
 clearinvoer.addEventListener("click", clearInvoer)
 /* /////////////////////////// Clear invoer button /////////////////////////// *
 /* boomboomscherm requirements */
 let bodyElement = document.querySelector("body")
 
 console.log(AttemptsLeft + " Attempts left")
+
 submit.addEventListener("click", reset)
-numPad1.addEventListener("click", nummerinvoer1)
-numPad2.addEventListener("click", nummerinvoer2)
-numPad3.addEventListener("click", nummerinvoer3)
-numPad4.addEventListener("click", nummerinvoer4)
-numPad5.addEventListener("click", nummerinvoer5)
-numPad6.addEventListener("click", nummerinvoer6)
-numPad7.addEventListener("click", nummerinvoer7)
-numPad8.addEventListener("click", nummerinvoer8)
-numPad9.addEventListener("click", nummerinvoer9)
-numPad0.addEventListener("click", nummerinvoer0)
+numPad1.addEventListener("mousedown", nummerinvoer1)
+numPad2.addEventListener("mousedown", nummerinvoer2)
+numPad3.addEventListener("mousedown", nummerinvoer3)
+numPad4.addEventListener("mousedown", nummerinvoer4)
+numPad5.addEventListener("mousedown", nummerinvoer5)
+numPad6.addEventListener("mousedown", nummerinvoer6)
+numPad7.addEventListener("mousedown", nummerinvoer7)
+numPad8.addEventListener("mousedown", nummerinvoer8)
+numPad9.addEventListener("mousedown", nummerinvoer9)
+numPad0.addEventListener("mousedown", nummerinvoer0)
+
+
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////// Module 1 //////////////////////////////////////////////// */
@@ -656,9 +643,7 @@ function generateRandomNumber() {
     slot4img.src = "images/blauwdraad.png"
     slot4.appendChild(slot4img)
 
-
   }
-
   if (wireNummerC == 1) {
     slot1.textContent = "C"
     slot1img.src = "images/rooddraad.png"
@@ -706,23 +691,19 @@ generateRandomNumber()
 let wireCountDown = 4
 function slot1wiresCheck() {
   if (slot1.textContent == "A") {
-
     wireCountDown = wireCountDown - 1
     slot1img.src = "images/zwartdraad_knip.png"
     completeWiresCheck()
   } else if (slot1.textContent == "B" && wireCountDown == 3) {
-
     wireCountDown = wireCountDown - 1
     slot1img.src = "images/groendraad_knip.png"
     completeWiresCheck()
   } else if (slot1.textContent == "C" && wireCountDown == 2) {
-
     wireCountDown = wireCountDown - 1
     slot1img.src = "images/rooddraad_knip.png"
     completeWiresCheck()
   }
   else if (slot1.textContent == "D" && wireCountDown == 1) {
-
     wireCountDown = wireCountDown - 1
     slot1img.src = "images/blauwdraad_knip.png"
     completeWiresCheck()
@@ -734,23 +715,19 @@ function slot1wiresCheck() {
 
 function slot2wiresCheck() {
   if (slot2.textContent == "A") {
-
     wireCountDown = wireCountDown - 1
     slot2img.src = "images/blauwdraad_knip.png"
     completeWiresCheck()
   } else if (slot2.textContent == "B" && wireCountDown == 3) {
-
     wireCountDown = wireCountDown - 1
     slot2img.src = "images/rooddraad_knip.png"
     completeWiresCheck()
   } else if (slot2.textContent == "C" && wireCountDown == 2) {
-
     wireCountDown = wireCountDown - 1
     slot2img.src = "images/groendraad_knip.png"
     completeWiresCheck()
   }
   else if (slot2.textContent == "D" && wireCountDown == 1) {
-
     wireCountDown = wireCountDown - 1
     slot2img.src = "images/zwartdraad_knip.png"
     completeWiresCheck()
@@ -760,57 +737,44 @@ function slot2wiresCheck() {
 
   }
 }
-
-
 function slot3wiresCheck() {
   if (slot3.textContent == "A") {
-
     wireCountDown = wireCountDown - 1
     slot3img.src = "images/rooddraad_knip.png"
     completeWiresCheck()
   } else if (slot3.textContent == "B" && wireCountDown == 3) {
-
     wireCountDown = wireCountDown - 1
     slot3img.src = "images/zwartdraad_knip.png"
     completeWiresCheck()
   } else if (slot3.textContent == "C" && wireCountDown == 2) {
-
     wireCountDown = wireCountDown - 1
     slot3img.src = "images/blauwdraad_knip.png"
     completeWiresCheck()
   }
   else if (slot3.textContent == "D" && wireCountDown == 1) {
-
     wireCountDown = wireCountDown - 1
     slot3img.src = "images/groendraad_knip.png"
     completeWiresCheck()
   }
   else {
     AttemptsLeft = 0
-
   }
-
 }
-
 function slot4wiresCheck() {
   if (slot4.textContent == "A") {
-
     wireCountDown = wireCountDown - 1
     slot4img.src = "images/groendraad_knip.png"
     completeWiresCheck()
   } else if (slot4.textContent == "B" && wireCountDown == 3) {
-
     wireCountDown = wireCountDown - 1
     slot4img.src = "images/blauwdraad_knip.png"
     completeWiresCheck()
   } else if (slot4.textContent == "C" && wireCountDown == 2) {
-
     wireCountDown = wireCountDown - 1
     slot4img.src = "images/zwartdraad_knip.png"
     completeWiresCheck()
   }
   else if (slot4.textContent == "D" && wireCountDown == 1) {
-
     wireCountDown = wireCountDown - 1
     slot4img.src = "images/rooddraad_knip.png"
     completeWiresCheck()
@@ -830,11 +794,9 @@ function wirecutSound() {
 function completeWiresCheck() {
   if (wireCountDown == 0) {
     console.log("Je hebt de draden opgelost!")
-    /*     module3.classList.remove("obstructModule")
-        module2.classList.add("obstructModule") */
-    const nextButton = document.querySelector(".next")
-    nextButton.classList.remove("disabledButton")
-    nextButton.disabled = false
+    /* SPEL BEINGIGD */
+
+    
   }
 }
 
@@ -856,173 +818,17 @@ slot4.addEventListener("mousedown", wirecutSound)
 /* //////////////////////////////////////////////// Module 2 //////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
 
-
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////// Module 3 //////////////////////////////////////////////// */
+/* //////////////////////////////////////////////// restart game //////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
-let detonator = document.querySelector(".detonateButton")
-let detonatorText = document.querySelector(".detonatorText")
-let stroke = document.querySelector(".stroke")
-let bombNumber = 0
-let releaseTimeNumber = 0
-let isSpacebarDown = false
+const replaybutton = document.querySelector(".replay")
 
-if (wireNummerA == 1) {
-  detonator.classList.add("achtergrondRood")
-  bombNumber = bombNumber + 0
-} else if (wireNummerA == 2) {
-  detonator.classList.add("achtergrondBlauw")
-  bombNumber = bombNumber + 1
-} else if (wireNummerA == 3) {
-  detonator.classList.add("achtergrondWit")
-  bombNumber = bombNumber - 1
-} else if (wireNummerA == 4) {
-  detonator.classList.add("achtergrondZwart")
-  bombNumber = bombNumber + 2
-}
-
-
-if (wireNummerC == 1) {
-  detonatorText.textContent = "press"
-  bombNumber = bombNumber - 1
-} else if (wireNummerC == 2) {
-  detonatorText.textContent = "hold"
-  bombNumber = bombNumber + 2
-} else if (wireNummerC == 3) {
-  detonatorText.textContent = "detonate"
-  bombNumber = bombNumber + 0
-} else if (wireNummerC == 4) {
-  detonatorText.textContent = "don't"
-  bombNumber = bombNumber + 1
-}
-
-
-function SpacebarDown(event) {
-  console.log("spacebardown")
-  if (event.keyCode == 32 && !isSpacebarDown) {
-    isSpacebarDown = true
-    if (wireNummerB == 1) {
-      stroke.classList.add("achtergrondRood")
-      bombNumber = bombNumber + 2
-    } else if (wireNummerB == 2) {
-      stroke.classList.add("achtergrondBlauw")
-      bombNumber = bombNumber + 0
-    } else if (wireNummerB == 3) {
-      stroke.classList.add("achtergrondWit")
-      bombNumber = bombNumber + 1
-    } else if (wireNummerB == 4) {
-      stroke.classList.add("achtergrondZwart")
-      bombNumber = bombNumber - 1
-    }
-    console.log(bombNumber + " is bombNumber")
-
-
-  }
-  if (bombNumber < 0) {
-    releaseTimeNumber = 1
-  } else if (bombNumber == 2 || bombNumber == 4) {
-    releaseTimeNumber = 5
-  } else if (bombNumber == 1 || bombNumber == 6) {
-    releaseTimeNumber = 2
-  } else if (bombNumber == 0 || bombNumber == 3) {
-    releaseTimeNumber = 9
-  } else if (bombNumber == 5) {
-    releaseTimeNumber = 7
-  }
-
-  console.log(releaseTimeNumber + " dit is release number")
-
-}
-
-
-let pressCheck = false
-
-
-
-
-function timeCheck() {
-  let minutes1 = Math.floor(timeLeft / 60)
-  const seconds1 = timeLeft % 60
-  let secondsTientallen = Math.floor(seconds1 / 10)
-  let secondsEnkeltallen = seconds1
-
-  if (seconds1 >= 50) {
-    secondsEnkeltallen = seconds1 - 50
-
-  } else if (seconds1 >= 40 && seconds1 < 50) {
-    secondsEnkeltallen = seconds1 - 40
-
-  } else if (seconds1 >= 30 && seconds1 < 40) {
-    secondsEnkeltallen = seconds1 - 30
-
-  } else if (seconds1 >= 20 && seconds1 < 30) {
-    secondsEnkeltallen = seconds1 - 20
-
-  } else if (seconds1 >= 10 && seconds1 < 20) {
-    secondsEnkeltallen = seconds1 - 10
-
-  } else if (seconds1 < 10) {
-    secondsEnkeltallen = seconds1
-
-  }
-  /*   console.log("min = " + minutes1)
-    console.log("seconde = " + secondsEnkeltallen)
-    console.log("tientallen = " + secondsTientallen)
-   */
-    let isSpacebarDown = false
-    function SpacebarPress(event) {
-      if (event.keyCode == 32 && !isSpacebarDown) {
-        console.log("spacebar press")
-        pressCheck = true
-        spacebarRelease(minutes1, secondsEnkeltallen, secondsTientallen)
-
-      }
-    }
-    document.addEventListener("keyup", SpacebarPress)
-/*   spacebarRelease(minutes1, secondsEnkeltallen, secondsTientallen) */
-
-}
-timeCheck()
-
-
-/* OM DIT TE FIXEN GEBRUIK && STATEMENT */
-function spacebarRelease(minutes1, secondsEnkeltallen, secondsTientallen) {
-  if ((releaseTimeNumber === minutes1 || releaseTimeNumber === secondsEnkeltallen || releaseTimeNumber === secondsTientallen) && pressCheck === true) {
-    console.log("Je hebt de bomb ontmantelt!")
-    bodyElement.classList.add("achtergrondGroen")
-
-  } else if (releaseTimeNumber !== minutes1 && releaseTimeNumber !== secondsEnkeltallen && releaseTimeNumber !== secondsTientallen && pressCheck === true) /* (releaseTimeNumber === minutes1 || releaseTimeNumber === secondsEnkeltallen || releaseTimeNumber === secondsTientallen) */ {
-    /* AttemptsLeft = 0 */
-
-    console.log("Doeidoei")
-  }
-}
-
-
-
-document.addEventListener("keydown", SpacebarDown)
-
-
-
-
-
-detonator.addEventListener("mousedown", SpacebarDown)
-startKnop.addEventListener("click", timeCheck)
+replaybutton.addEventListener("click", function(){
+  location.reload()
+})
 
 
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
-/* //////////////////////////////////////////////// Module 3 //////////////////////////////////////////////// */
+/* //////////////////////////////////////////////// restart game //////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
-
-/* Cheat menu */
-/* const CHEAT = document.querySelector(".CHEAT")
-function cheat() {
-  module2.classList.remove("obstructModule")
-  module1.classList.remove("obstructModule")
-  module3.classList.remove("obstructModule")
-
-}
-
-CHEAT.addEventListener("click", cheat) */
-/* Cheat menu */
 
