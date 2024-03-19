@@ -3,11 +3,16 @@ body{
     font-family: "moby", sans-serif;
     font-weight: 400;
     font-style: normal;
-    background-color: rgb(75, 55, 28);
+/*     background-image:url(images/menu_background.jpg); *//* https://unsplash.com/photos/brown-parquet-board-wG923J9naFQ */
+/*     background-size:cover;
+    background-repeat: no-repeat; */
+    background: linear-gradient(grey, rgb(69, 68, 68));
     font-size: 3em;
     margin-top: 3vh;
     display: flex;
     justify-content: center;
+    height: 96vh;
+
 }
 
 button{
@@ -41,7 +46,7 @@ button:hover{
 .startscreen p{
     font-size: 0.7em;
     text-align: center;
-    width: 60vw;
+    width: 70vw;
 }
 
 .timeSelect{
@@ -95,6 +100,7 @@ body div.timer p{
     height: fit-content;
     margin-top: auto;
     margin-bottom: auto;
+    margin-right: 0;
     background-color: rgb(58, 57, 57);
     font-size: 1em;
     width: 5vw;
@@ -106,6 +112,7 @@ body div.timer p{
     height: fit-content;
     margin-top: auto;
     margin-bottom: auto;
+    margin-left: 0;
     background-color: rgb(58, 57, 57);
     font-size: 1em;
     width: 5vw;
@@ -119,6 +126,7 @@ body div.timer p{
     height: fit-content;
     margin-top: auto;
     margin-bottom: auto;
+    margin-right: 0;
     background-color: rgb(58, 57, 57);
     font-size: 1em;
     width: 5vw;
@@ -130,6 +138,7 @@ body div.timer p{
     height: fit-content;
     margin-top: auto;
     margin-bottom: auto;
+    margin-left: 0;
     background-color: rgb(58, 57, 57);
     font-size: 1em;
     width: 5vw;
@@ -364,15 +373,17 @@ h2{
 }
 .hintmenu {
     border: #000000 outset 0.3rem;
-    width: 30vw;
+    width: 45vw;
     font-size: 0.5em;
     background-color:rgb(156, 156, 156) ;
-    margin-left: 5vw;
+    margin-left: 2vw;
+    padding-top: 1vh;
     
 }
 
-.hintmenu ol{
-    margin-left: 2vw;
+.hintmenu ul{
+
+    list-style: none;
 }
 
 
@@ -436,7 +447,7 @@ h3{
     justify-content: center;
     margin: auto;
     margin-top: 10vh;
-
+    transition: 200ms ease;
 }
 .replay{
     margin-top: 4.5vh;
@@ -459,7 +470,19 @@ h3{
 
 
 .achtergrondGroen{
-    background-color: green;
+    background: linear-gradient(black, rgb(43, 255, 0));
+}
+
+.sound {
+    position: absolute;
+    right:  4vw;
+    top: 6vh;
+    height: 3vh;
+    height: fit-content;
+}
+
+.musicButton{
+    width: 2vw;
 }
 /* /////////////////////////////////////Game End//////////////////////// */
 
@@ -467,6 +490,6 @@ h3{
     display: none;
 }
 .kaboom{
- background-color: red;
+    background: linear-gradient(black, red);
 }
 

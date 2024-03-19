@@ -12,6 +12,35 @@ const minutes15 = document.querySelector(".minutes15")
 const minutes10 = document.querySelector(".minutes10")
 const minutes5 = document.querySelector(".minutes5")
 let TimeSelectButtons = document.querySelectorAll(".timeSelect button")
+let menu_backgroundMusic = new Audio("audio/mainmenu_music.mp3")/* https://www.youtube.com/watch?v=xy_NKN75Jhw */
+let tense_backgroundMusic = new Audio("audio/tense_background_music.mp3")/* https://www.youtube.com/watch?v=VReGLwDPMpE */
+let musicPlayButton = document.querySelector(".musicButton")
+let musicPlaying = false
+
+
+menu_backgroundMusic.loop = true
+menu_backgroundMusic.pause()
+
+
+musicPlayButton.addEventListener("click", function(){
+  if(menu_backgroundMusic == null && musicPlaying == true){
+    tense_backgroundMusic.pause()
+    musicPlaying = false
+    musicPlayButton.src = "images/pause_button.png"
+  } else if(menu_backgroundMusic == null && musicPlaying == false){
+    tense_backgroundMusic.play()
+    musicPlaying = true
+    musicPlayButton.src = "images/play_button.png"
+  } else if (musicPlaying == true){
+    menu_backgroundMusic.pause()
+    musicPlaying = false
+    musicPlayButton.src = "images/pause_button.png"
+  } else if( musicPlaying == false){
+    menu_backgroundMusic.play()
+    musicPlaying = true
+    musicPlayButton.src = "images/play_button.png"
+  }
+})
 
 TimeSelectButtons.forEach(function(button){
   button.addEventListener("click", function(){
@@ -45,6 +74,11 @@ function bombTimer() {
 
 function startcountdown() {
   bombTimer()
+  menu_backgroundMusic.pause()
+  menu_backgroundMusic = null /* Hiermee wordt de menu muziek verwijderd. Deze "delete" funcite heb ik van chatgpt en het verwijderd de variable in de javascript */
+  tense_backgroundMusic.loop = true
+  tense_backgroundMusic.play()
+
   module1.classList.remove("obstructModule")
   startKnop.classList.add("obstructModule")
   Timer.classList.remove("obstructModule")
@@ -52,20 +86,25 @@ function startcountdown() {
   const tijdsInterval = setInterval(() => {
     timeLeft--
     bombTimer()
-    if (timeLeft <= 0 || AttemptsLeft == 0) {
+    if (timeLeft <= 0 || AttemptsLeft <= 0) {
       clearInterval(tijdsInterval)
       /* bombTimeLeft.textContent == "00:00" */
       bodyElement.classList.add("kaboom")
+      tense_backgroundMusic.pause()
       obstructGame()
       gameEndText.textContent = "The bomb has exploded!"
       gameEnd.classList.remove("obstructModule")
       /* bombTimeLeft.replaceWith(EndTimer).textContent = "00:00" */
-      let ExplosionSound = new Audio("audio/audio_boom.mp3")
+      let ExplosionSound = new Audio("audio/audio_boom.mp3")/*https://www.youtube.com/watch?v=OYrTQsi1NtE&pp=ygUWY3NnbyBib21iIHNvdW5kIGVmZmVjdA%3D%3D */
       ExplosionSound.play()
     } else if( wireCountDown == 0){
       clearInterval(tijdsInterval)
+      tense_backgroundMusic.pause()
+      obstructGame()
       bodyElement.classList.add("achtergrondGroen")
       gameEnd.classList.remove("obstructModule")
+      let win_music = new Audio("audio/win_music.mp3")/* https://www.youtube.com/watch?v=lcJH8JtgZoE */
+      win_music.play()
     }
   }, 1000)
 }
@@ -75,6 +114,9 @@ function startcountdown() {
 function obstructGame() {
   module1.classList.add("obstructModule")
   module2.classList.add("obstructModule")
+  backButton.classList.add("obstructModule")
+  nextButton.classList.add("obstructModule")
+  moduleCounter.classList.add("obstructModule")
 }
 
 startKnop.addEventListener("click", startcountdown) /* de start knop die de bovenste fucnties aanzetten*/
@@ -112,6 +154,16 @@ let numPad7 = document.querySelector(".numPad7")
 let numPad8 = document.querySelector(".numPad8")
 let numPad9 = document.querySelector(".numPad9")
 let numPad0 = document.querySelector(".numPad0")
+
+let numpadKeys = document.querySelectorAll("#key")
+
+numpadKeys.forEach(function(press){
+  press.addEventListener("mousedown",function() {
+    let numpad_press = new Audio("audio/numpad_press.mp3")/* https://pixabay.com/sound-effects/interface-button-154180/ */
+    numpad_press.play()
+  })
+})
+
 /* Numpad systeem */
 
 /* nummer invoer systeem */
@@ -131,7 +183,7 @@ function nummerinvoer1() {
 }
 
 function nummerinvoer2() {
-
+  
   if (invoer1.textContent === ".") {
     invoer1.textContent = 2
   } else if (invoer2.textContent === ".") {
@@ -144,7 +196,7 @@ function nummerinvoer2() {
 }
 
 function nummerinvoer3() {
-
+  
   if (invoer1.textContent === ".") {
     invoer1.textContent = 3
   } else if (invoer2.textContent === ".") {
@@ -157,7 +209,7 @@ function nummerinvoer3() {
 }
 
 function nummerinvoer4() {
-
+  
   if (invoer1.textContent === ".") {
     invoer1.textContent = 4
   } else if (invoer2.textContent === ".") {
@@ -170,7 +222,7 @@ function nummerinvoer4() {
 }
 
 function nummerinvoer5() {
-
+  
   if (invoer1.textContent === ".") {
     invoer1.textContent = 5
   } else if (invoer2.textContent === ".") {
@@ -183,7 +235,7 @@ function nummerinvoer5() {
 }
 
 function nummerinvoer6() {
-
+  
   if (invoer1.textContent === ".") {
     invoer1.textContent = 6
   } else if (invoer2.textContent === ".") {
@@ -196,7 +248,7 @@ function nummerinvoer6() {
 }
 
 function nummerinvoer6() {
-
+  
   if (invoer1.textContent === ".") {
     invoer1.textContent = 6
   } else if (invoer2.textContent === ".") {
@@ -209,7 +261,7 @@ function nummerinvoer6() {
 }
 
 function nummerinvoer7() {
-
+ 
   if (invoer1.textContent === ".") {
     invoer1.textContent = 7
   } else if (invoer2.textContent === ".") {
@@ -222,7 +274,7 @@ function nummerinvoer7() {
 }
 
 function nummerinvoer8() {
-
+ 
   if (invoer1.textContent === ".") {
     invoer1.textContent = 8
   } else if (invoer2.textContent === ".") {
@@ -235,7 +287,7 @@ function nummerinvoer8() {
 }
 
 function nummerinvoer9() {
-
+  
   if (invoer1.textContent === ".") {
     invoer1.textContent = 9
   } else if (invoer2.textContent === ".") {
@@ -248,7 +300,7 @@ function nummerinvoer9() {
 }
 
 function nummerinvoer0() {
-
+  
   if (invoer1.textContent === ".") {
     invoer1.textContent = 0
   } else if (invoer2.textContent === ".") {
@@ -367,9 +419,6 @@ function reset() {
   }
   /* ///////////////////////////Color for text ///////////////////////////*/
 
-
-
-
   /* ////////////////////////////////////Feedbacklog////////////////////////////// */
     /* /////////////////////////// */
   /* Cloning of invoer */
@@ -471,7 +520,11 @@ function reset() {
     feedback9_3.replaceWith(invoer3Clone)
     feedback9_4.replaceWith(invoer4Clone)
   } else if (AttemptsLeft == 0) {
-    console.log("bloe")
+    console.log("boem")
+    invoer1Clone.classList.add("obstructModule")
+    invoer2Clone.classList.add("obstructModule")
+    invoer3Clone.classList.add("obstructModule")
+    invoer4Clone.classList.add("obstructModule")
   }
   /* ////////////////////////// */
   /* feedbackinvoer */
@@ -827,7 +880,17 @@ replaybutton.addEventListener("click", function(){
   location.reload()
 })
 
+const buttons = document.querySelectorAll("button")
 
+buttons.forEach(function(button){
+  button.addEventListener("mousedown", function(){
+    let buttonClickSound = new Audio("audio/button_press.mp3")/*https://www.youtube.com/watch?v=h8y0JMVwdmM&pp=ygUVbWluZWNyYWZ0IGNsaWNrIHNvdW5k */
+    buttonClickSound.play()
+    
+  })
+})
+
+/* buttons.addEventListener("mousedown", new Audio("audio/button_press.mp3").play()) */
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////// restart game //////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
