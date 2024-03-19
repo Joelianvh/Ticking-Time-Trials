@@ -11,16 +11,18 @@
 
 <body>
     <main>
+        <div class="flash_container"></div>
     <div class="timer obstructModule">
         <h1>05:00</h1>
-
         <button class="back disabledButton"> < </button>
         <p class="moduleCounter">1/2</p>
         <button class="next disabledButton"> > </button>
+        <img id="led" src="images/led_off.png" alt="" class="led1">
+        <img id="led" src="images/led_off.png" alt="" class="led2">
     </div>
     <div class="gameEnd obstructModule">
-        <h2>You have disarmed the bomb!</h2>
-        <button class="replay">Click here to restart!</button>
+        <h2>Je hebt de bom ontmateld!</h2>
+        <button class="replay">Klik hier om opnieuw te spelen!</button>
     </div>
     <div class="module1 obstructModule">
         <div class="fullkeypad">
@@ -59,8 +61,6 @@
                 </div>
             </div>
         </div>
-
-
         <section class="feedbacklog">
             <div class="feedback1">
                 <div class="feed1_1">.</div>
@@ -119,9 +119,7 @@
         </section>
         <section>
             <h2>Code guesser - module 1</h2>
-            <p>
-                je hebt <span class="AttemptAantal">10</span> pogingen om een code in te voeren. na elke poging krijg je te zien:
-            </p>
+            <p>je hebt <span class="AttemptAantal">10</span> pogingen om een code in te voeren. na elke poging krijg je te zien:</p>
             <ul>
                 <li class="red">rood = fout nummer</li>
                 <li class="orange">oranje = correct nummer maar niet op de goeie positie</li>
@@ -129,8 +127,7 @@
             </ul>
         </section>
     </div>
-    <div class="module2 obstructModule ">
-
+    <div class="module2  obstructModule">
         <div class="arrayleft">
             <div>
                 <p class="slot1"></p> <p class="slotText">slot1</p>
@@ -144,7 +141,6 @@
             <div>
                 <p class="slot4"></p> <p class="slotText">slot4</p>
             </div>
-
         </div>
         <div class="hintmenu">
             <h3>Als <strong class="blauw">Blauw draad</strong> op</h3>
@@ -154,15 +150,13 @@
               <li>slot 3 zit, knip als derde.</li>
               <li>slop 4 zit, als tweede doorknippen.</li>
             </ul>
-            
             <h3>Als <strong class="groen">Groen draad</strong> op</h3>
             <ul>
               <li>slot 1 zit, als tweede doorknippen.</li>
               <li>slot 2 zit, knip als derde.</li>
               <li>slot 3 zit, dan als laatste knippen</li>
               <li>slop 4 zit, knip dan als eerste</li>
-            </ul>
-            
+            </ul> 
             <h3>Als <strong class="rood">Rood draad</strong> op</h3>
             <ul>
               <li>slot 1 zit, knip als derde.</li>
@@ -170,7 +164,6 @@
               <li>slot 3 zit, knip dan als eerste </li>
               <li>slop 4 zit, dan als laatste knippen</li>
             </ul>
-            
             <h3>Als <strong class="zwart">Zwart draad</strong> op</h3>
             <ul>
               <li>slot 1 zit, knip dan als eerste </li>
@@ -178,35 +171,6 @@
               <li>slot 3 zit, als tweede doorknippen. </li>
               <li>slot 4 zit, knip als derde.</li>
             </ul>
-
-            
-
-
-<!--                         <p>
-                Als <strong class="zwart">zwart</strong> op slot 1 zit, knip je die eerst door.
-                Als <strong class="blauw">blauw</strong>  op slot 2 zit knip je die eerst door.
-                Als <strong class="rood">rood</strong> op slot 3 zit knip je deze.
-                Als <strong class="groen">groen</strong>  op slot 4 zit knip je die.
-            </p>
-            <p>
-                Als <strong class="groen">groen</strong>  op slot 1 is dan knip je deze als tweede.
-                Als <strong class="rood">rood</strong> op slot 2 zit dan knip je deze als tweede.
-                Als <strong class="zwart">zwart</strong> op slot 3 zit knip je deze als tweede.
-                Als <strong class="blauw">blauw</strong>  op slot 4, knip deze als tweede.
-            </p>
-            <p>
-
-                Als <strong class="rood">rood</strong> op plaats 1 is knip je deze als eennalaatste.
-                Als <strong class="groen">groen</strong>  op plaats 2 zit knip je die als eennalaatste.
-                Als <strong class="blauw">blauw</strong>  op plaats 3 zit knip je deze als derde.
-                Als <strong class="zwart">zwart</strong> slot 4 is, knip als derde.
-            </p>
-            <p>
-                Als <strong class="blauw">blauw</strong> op slot 1 zit knip als laatste.
-                Als <strong class="zwart">zwart</strong> op 2 zit knip als laatst deze.
-                als <strong class="groen">groen</strong> op slot 3 zit, als laatste knippen.
-                als <strong class="rood">rood</strong> als laatste is, knip deze ook als laatste.
-            </p> -->
         </div>
     </div>
     <div class="startscreen ">
@@ -223,7 +187,6 @@
     </div>
     <button class="sound"><img class="musicButton" src="images/pause_button.png" alt=""></button>
     </main>
-<!--     <h2 class="CHEAT">HALLO</h2> -->
     <script src="script.js"></script>
 
 </body>

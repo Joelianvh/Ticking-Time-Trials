@@ -15,8 +15,11 @@ let TimeSelectButtons = document.querySelectorAll(".timeSelect button")
 let menu_backgroundMusic = new Audio("audio/mainmenu_music.mp3")/* https://www.youtube.com/watch?v=xy_NKN75Jhw */
 let tense_backgroundMusic = new Audio("audio/tense_background_music.mp3")/* https://www.youtube.com/watch?v=VReGLwDPMpE */
 let musicPlayButton = document.querySelector(".musicButton")
+let soundButton = document.querySelector(".sound")
 let musicPlaying = false
-
+let led1 = document.querySelector(".led1")
+let led2 = document.querySelector(".led2")
+let alarm_sound = new Audio("audio/purge_loop_sound.mp3")/* https://www.youtube.com/watch?v=pNQIlBqmX_I */
 
 menu_backgroundMusic.loop = true
 menu_backgroundMusic.pause()
@@ -78,7 +81,7 @@ function startcountdown() {
   menu_backgroundMusic = null /* Hiermee wordt de menu muziek verwijderd. Deze "delete" funcite heb ik van chatgpt en het verwijderd de variable in de javascript */
   tense_backgroundMusic.loop = true
   tense_backgroundMusic.play()
-
+  musicPlaying = true
   module1.classList.remove("obstructModule")
   startKnop.classList.add("obstructModule")
   Timer.classList.remove("obstructModule")
@@ -86,17 +89,27 @@ function startcountdown() {
   const tijdsInterval = setInterval(() => {
     timeLeft--
     bombTimer()
+    
+    if (timeLeft == 15){
+      alarm_sound.loop = true
+      alarm_sound.play()
+      tense_backgroundMusic.volume = 0.5
+      document.querySelector(".flash_container").classList.add("lowTime")
+    }
     if (timeLeft <= 0 || AttemptsLeft <= 0) {
       clearInterval(tijdsInterval)
       /* bombTimeLeft.textContent == "00:00" */
       bodyElement.classList.add("kaboom")
       tense_backgroundMusic.pause()
       obstructGame()
-      gameEndText.textContent = "The bomb has exploded!"
+      gameEndText.textContent = "De bom is geëxplodeerd!"
       gameEnd.classList.remove("obstructModule")
       /* bombTimeLeft.replaceWith(EndTimer).textContent = "00:00" */
       let ExplosionSound = new Audio("audio/audio_boom.mp3")/*https://www.youtube.com/watch?v=OYrTQsi1NtE&pp=ygUWY3NnbyBib21iIHNvdW5kIGVmZmVjdA%3D%3D */
       ExplosionSound.play()
+      alarm_sound.loop = false
+      document.querySelector(".flash_container").classList.remove("lowTime")
+      soundButton.classList.add("obstructModule")
     } else if( wireCountDown == 0){
       clearInterval(tijdsInterval)
       tense_backgroundMusic.pause()
@@ -105,6 +118,9 @@ function startcountdown() {
       gameEnd.classList.remove("obstructModule")
       let win_music = new Audio("audio/win_music.mp3")/* https://www.youtube.com/watch?v=lcJH8JtgZoE */
       win_music.play()
+      alarm_sound.loop = false
+      document.querySelector(".flash_container").classList.remove("lowTime")
+      soundButton.classList.add("obstructModule")
     }
   }, 1000)
 }
@@ -451,11 +467,16 @@ function reset() {
     invoer2Clone.classList.add("obstructModule")
     invoer3Clone.classList.add("obstructModule")
     invoer4Clone.classList.add("obstructModule")
+    led1.src = "images/led_on.png"
+    let correct_effect = new Audio("audio/correct_effect.mp3")/* https://www.youtube.com/watch?v=N_NPMLBpUow */
+    correct_effect.play()
   } else {
     AttemptsLeft = AttemptsLeft - 1
     let pogingText = document.querySelector(".AttemptAantal")
     pogingText.textContent = AttemptsLeft
     console.log(AttemptsLeft + " Attempts left")
+    let incorrect_effect = new Audio("audio/incorrect_effect.mp3")/* https://www.youtube.com/watch?v=F84nX0TtUXg */
+    incorrect_effect.play()
     invoer1.textContent = "."
     invoer2.textContent = "."
     invoer3.textContent = "."
@@ -839,7 +860,7 @@ function slot4wiresCheck() {
 
 }
 function wirecutSound() {
-  let wireCutSound = new Audio("audio/wirecut.mp3")
+  let wireCutSound = new Audio("audio/wirecut.mp3")/* https://www.youtube.com/watch?v=s9MaIoA0JsY&pp=ygURc25hcCBzb3VuZCBlZmZlY3Q%3D */
   wireCutSound.play()
 }
 
@@ -847,6 +868,7 @@ function wirecutSound() {
 function completeWiresCheck() {
   if (wireCountDown == 0) {
     console.log("Je hebt de draden opgelost!")
+    led2.src = "images/led_on.png"
     /* SPEL BEINGIGD */
 
     
@@ -890,7 +912,6 @@ buttons.forEach(function(button){
   })
 })
 
-/* buttons.addEventListener("mousedown", new Audio("audio/button_press.mp3").play()) */
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
 /* //////////////////////////////////////////////// restart game //////////////////////////////////////////////// */
 /* //////////////////////////////////////////////////////////////////////////////////////////////// */
