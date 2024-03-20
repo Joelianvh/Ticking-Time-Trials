@@ -17,8 +17,8 @@ let tense_backgroundMusic = new Audio("audio/tense_background_music.mp3")/* http
 let musicPlayButton = document.querySelector(".musicButton")
 let soundButton = document.querySelector(".sound")
 let musicPlaying = false
-let led1 = document.querySelector(".led1")
-let led2 = document.querySelector(".led2")
+let led1 = document.querySelector("#led1")
+let led2 = document.querySelector("#led2")
 let alarm_sound = new Audio("audio/purge_loop_sound.mp3")/* https://www.youtube.com/watch?v=pNQIlBqmX_I */
 
 menu_backgroundMusic.loop = true
@@ -160,18 +160,18 @@ const invoer3 = document.querySelector(".Invoer3")
 const invoer4 = document.querySelector(".Invoer4")
 
 
-let numPad1 = document.querySelector(".numPad1")
-let numPad2 = document.querySelector(".numPad2")
-let numPad3 = document.querySelector(".numPad3")
-let numPad4 = document.querySelector(".numPad4")
-let numPad5 = document.querySelector(".numPad5")
-let numPad6 = document.querySelector(".numPad6")
-let numPad7 = document.querySelector(".numPad7")
-let numPad8 = document.querySelector(".numPad8")
-let numPad9 = document.querySelector(".numPad9")
-let numPad0 = document.querySelector(".numPad0")
+let numPad1 = document.querySelector("#numPad1")
+let numPad2 = document.querySelector("#numPad2")
+let numPad3 = document.querySelector("#numPad3")
+let numPad4 = document.querySelector("#numPad4")
+let numPad5 = document.querySelector("#numPad5")
+let numPad6 = document.querySelector("#numPad6")
+let numPad7 = document.querySelector("#numPad7")
+let numPad8 = document.querySelector("#numPad8")
+let numPad9 = document.querySelector("#numPad9")
+let numPad0 = document.querySelector("#numPad0")
 
-let numpadKeys = document.querySelectorAll("#key")
+let numpadKeys = document.querySelectorAll(".key")
 
 numpadKeys.forEach(function(press){
   press.addEventListener("mousedown",function() {
@@ -902,7 +902,7 @@ replaybutton.addEventListener("click", function(){
   location.reload()
 })
 
-const buttons = document.querySelectorAll("button")
+const buttons = document.querySelectorAll("button:not(.key)") /* de "not" fucntie zorgt er hier voor dat alle numPad buttons hier niet aan gaan. chatgpt heeft me deze fucntie geleerd */
 
 buttons.forEach(function(button){
   button.addEventListener("mousedown", function(){

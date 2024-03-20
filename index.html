@@ -14,11 +14,11 @@
         <div class="flash_container"></div>
     <div class="timer obstructModule">
         <h1>05:00</h1>
-        <button class="back disabledButton"> < </button>
+        <button class="back disabledButton"> &lt; </button> <!--  heb ik van chatgpt gekregen als oplossing &lt; -->
         <p class="moduleCounter">1/2</p>
         <button class="next disabledButton"> > </button>
-        <img id="led" src="images/led_off.png" alt="" class="led1">
-        <img id="led" src="images/led_off.png" alt="" class="led2">
+        <img id="led1" src="images/led_off.png" alt="" class="led">
+        <img id="led2" src="images/led_off.png" alt="" class="led">
     </div>
     <div class="gameEnd obstructModule">
         <h2>Je hebt de bom ontmateld!</h2>
@@ -37,22 +37,22 @@
             <div class="vormnumpad">
                 <div class="numpad">
                     <div class="toprow">
-                        <img id="key" src="images/numPad1.png" alt="" class="numPad1">
-                        <img id="key" src="images/numPad2.png" alt="" class="numPad2">
-                        <img id="key" src="images/numPad3.png" alt="" class="numPad3">
+                        <button class="key" id="numPad1">1</button>
+                        <button class="key" id="numPad2">2</button>
+                        <button class="key" id="numPad3">3</button>
                     </div>
                     <div class="middlerow">
-                        <img id="key" src="images/numPad4.png" alt="" class="numPad4">
-                        <img id="key" src="images/numPad5.png" alt="" class="numPad5">
-                        <img id="key" src="images/numPad6.png" alt="" class="numPad6">
+                        <button class="key" id="numPad4">4</button>
+                        <button class="key" id="numPad5">5</button>   
+                        <button class="key" id="numPad6">6</button> 
                     </div>
                     <div class="bottomrow">
-                        <img id="key" src="images/numPad7.png" alt="" class="numPad7">
-                        <img id="key" src="images/numPad8.png" alt="" class="numPad8">
-                        <img id="key" src="images/numPad9.png" alt="" class="numPad9">
+                        <button class="key" id="numPad7">7</button>
+                        <button class="key" id="numPad8">8</button>
+                        <button class="key" id="numPad9">9</button>
                     </div>
                     <div class="numPad0box">
-                        <img src="images/numPad0.png" alt="" class="numPad0">
+                        <button class="key" id="numPad0">0</button>
                     </div>
                 </div>
                 <div class="buttons">
@@ -127,7 +127,7 @@
             </ul>
         </section>
     </div>
-    <div class="module2  obstructModule">
+    <div class="module2 obstructModule ">
         <div class="arrayleft">
             <div>
                 <p class="slot1"></p> <p class="slotText">slot1</p>
@@ -173,7 +173,7 @@
             </ul>
         </div>
     </div>
-    <div class="startscreen ">
+    <div class="startscreen">
         <h1>Ticking Time Trials!</h1>
         <p>Welkom bij mijn spel. Het doel is om een bom te ontmantelen door 2 modules te voltooien.</p>
         <p>De eerste is het raden van een geheime code van 4 cijfers. En bij de tweede moet je 4 gekleurde draden op volgorde doorknippen. De volgorde waarin u knipt, wordt bepaald door de kleur en positie van elk van hen. <strong>Lees de meegeleverde instructies aandachtig!</strong> </p>
