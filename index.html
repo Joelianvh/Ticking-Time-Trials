@@ -1,194 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ticking Time Trials</title>
-    <link rel="stylesheet" href="style2.css">
-    <link rel="stylesheet" href="https://use.typekit.net/hbn6gae.css">
-</head>
+    <link rel="stylesheet" href="style2.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/hbn6gae.css" />
+  </head>
 
-<body>
+  <body>
     <main>
-        <div class="flash_container"></div>
-    <div class="timer obstructModule">
+      <div class="flash_container"></div>
+      <div class="timer obstructModule">
         <h1>05:00</h1>
-        <button class="back disabledButton"> &lt; </button> <!--  heb ik van chatgpt gekregen als oplossing &lt; -->
+        <button class="back disabledButton">&lt;</button>
+        <!--  heb ik van chatgpt gekregen als oplossing &lt; -->
         <p class="moduleCounter">1/2</p>
-        <button class="next disabledButton"> > </button>
-        <img id="led1" src="images/led_off.png" alt="" class="led">
-        <img id="led2" src="images/led_off.png" alt="" class="led">
-    </div>
-    <div class="gameEnd obstructModule">
+        <button class="next disabledButton">></button>
+        <img id="led1" src="images/led_off.png" alt="" class="led" />
+        <img id="led2" src="images/led_off.png" alt="" class="led" />
+      </div>
+      <div class="gameEnd obstructModule">
         <h2>Je hebt de bom ontmateld!</h2>
         <button class="replay">Klik hier om opnieuw te spelen!</button>
-    </div>
-    <div class="module1 obstructModule">
+      </div>
+      <div class="module1 obstructModule">
         <div class="fullkeypad">
-            <div class="invoerbox">
-                <div class="invoerveld">
-                    <p id="Invoer1" class="Invoer1">.</p>
-                    <p id="Invoer2" class="Invoer2">.</p>
-                    <p id="Invoer3" class="Invoer3">.</p>
-                    <p id="Invoer4" class="Invoer4">.</p>
-                </div>
+          <div class="invoerbox">
+            <div class="invoerveld">
+              <p id="Invoer1" class="Invoer1">.</p>
+              <p id="Invoer2" class="Invoer2">.</p>
+              <p id="Invoer3" class="Invoer3">.</p>
+              <p id="Invoer4" class="Invoer4">.</p>
             </div>
-            <div class="vormnumpad">
-                <div class="numpad">
-                    <div class="toprow">
-                        <button class="key" id="numPad1">1</button>
-                        <button class="key" id="numPad2">2</button>
-                        <button class="key" id="numPad3">3</button>
-                    </div>
-                    <div class="middlerow">
-                        <button class="key" id="numPad4">4</button>
-                        <button class="key" id="numPad5">5</button>   
-                        <button class="key" id="numPad6">6</button> 
-                    </div>
-                    <div class="bottomrow">
-                        <button class="key" id="numPad7">7</button>
-                        <button class="key" id="numPad8">8</button>
-                        <button class="key" id="numPad9">9</button>
-                    </div>
-                    <div class="numPad0box">
-                        <button class="key" id="numPad0">0</button>
-                    </div>
-                </div>
-                <div class="buttons">
-                    <button class="submit">enter</button>
-                    <button class="clear">delete</button>
-                </div>
+          </div>
+          <div class="vormnumpad">
+            <div class="numpad">
+              <div class="toprow">
+                <button class="key" id="numPad1">1</button>
+                <button class="key" id="numPad2">2</button>
+                <button class="key" id="numPad3">3</button>
+              </div>
+              <div class="middlerow">
+                <button class="key" id="numPad4">4</button>
+                <button class="key" id="numPad5">5</button>
+                <button class="key" id="numPad6">6</button>
+              </div>
+              <div class="bottomrow">
+                <button class="key" id="numPad7">7</button>
+                <button class="key" id="numPad8">8</button>
+                <button class="key" id="numPad9">9</button>
+              </div>
+              <div class="numPad0box">
+                <button class="key" id="numPad0">0</button>
+              </div>
             </div>
+            <div class="buttons">
+              <button class="submit">enter</button>
+              <button class="clear">delete</button>
+            </div>
+          </div>
         </div>
         <section class="feedbacklog">
-            <div class="feedback1">
-                <div class="feed1_1">.</div>
-                <div class="feed1_2">.</div>
-                <div class="feed1_3">.</div>
-                <div class="feed1_4">.</div>
-            </div>
-            <div class="feedback2">
-                <div class="feed2_1">.</div>
-                <div class="feed2_2">.</div>
-                <div class="feed2_3">.</div>
-                <div class="feed2_4">.</div>
-            </div>
-            <div class="feedback3">
-                <div class="feed3_1">.</div>
-                <div class="feed3_2">.</div>
-                <div class="feed3_3">.</div>
-                <div class="feed3_4">.</div>
-            </div>
-            <div class="feedback4">
-                <div class="feed4_1">.</div>
-                <div class="feed4_2">.</div>
-                <div class="feed4_3">.</div>
-                <div class="feed4_4">.</div>
-            </div>
-            <div class="feedback5">
-                <div class="feed5_1">.</div>
-                <div class="feed5_2">.</div>
-                <div class="feed5_3">.</div>
-                <div class="feed5_4">.</div>
-            </div>
-            <div class="feedback6">
-                <div class="feed6_1">.</div>
-                <div class="feed6_2">.</div>
-                <div class="feed6_3">.</div>
-                <div class="feed6_4">.</div>
-            </div>
-            <div class="feedback7">
-                <div class="feed7_1">.</div>
-                <div class="feed7_2">.</div>
-                <div class="feed7_3">.</div>
-                <div class="feed7_4">.</div>
-            </div>
-            <div class="feedback8">
-                <div class="feed8_1">.</div>
-                <div class="feed8_2">.</div>
-                <div class="feed8_3">.</div>
-                <div class="feed8_4">.</div>
-            </div>
-            <div class="feedback9">
-                <div class="feed9_1">.</div>
-                <div class="feed9_2">.</div>
-                <div class="feed9_3">.</div>
-                <div class="feed9_4">.</div>
-            </div>
+          <div class="feedback1">
+            <div class="feed1_1">.</div>
+            <div class="feed1_2">.</div>
+            <div class="feed1_3">.</div>
+            <div class="feed1_4">.</div>
+          </div>
+          <div class="feedback2">
+            <div class="feed2_1">.</div>
+            <div class="feed2_2">.</div>
+            <div class="feed2_3">.</div>
+            <div class="feed2_4">.</div>
+          </div>
+          <div class="feedback3">
+            <div class="feed3_1">.</div>
+            <div class="feed3_2">.</div>
+            <div class="feed3_3">.</div>
+            <div class="feed3_4">.</div>
+          </div>
+          <div class="feedback4">
+            <div class="feed4_1">.</div>
+            <div class="feed4_2">.</div>
+            <div class="feed4_3">.</div>
+            <div class="feed4_4">.</div>
+          </div>
+          <div class="feedback5">
+            <div class="feed5_1">.</div>
+            <div class="feed5_2">.</div>
+            <div class="feed5_3">.</div>
+            <div class="feed5_4">.</div>
+          </div>
+          <div class="feedback6">
+            <div class="feed6_1">.</div>
+            <div class="feed6_2">.</div>
+            <div class="feed6_3">.</div>
+            <div class="feed6_4">.</div>
+          </div>
+          <div class="feedback7">
+            <div class="feed7_1">.</div>
+            <div class="feed7_2">.</div>
+            <div class="feed7_3">.</div>
+            <div class="feed7_4">.</div>
+          </div>
+          <div class="feedback8">
+            <div class="feed8_1">.</div>
+            <div class="feed8_2">.</div>
+            <div class="feed8_3">.</div>
+            <div class="feed8_4">.</div>
+          </div>
+          <div class="feedback9">
+            <div class="feed9_1">.</div>
+            <div class="feed9_2">.</div>
+            <div class="feed9_3">.</div>
+            <div class="feed9_4">.</div>
+          </div>
         </section>
         <section>
-            <h2>Code guesser - module 1</h2>
-            <p>je hebt <span class="AttemptAantal">10</span> pogingen om een code in te voeren. na elke poging krijg je te zien:</p>
-            <ul>
-                <li class="red">rood = fout nummer</li>
-                <li class="orange">oranje = correct nummer maar niet op de goeie positie</li>
-                <li class="green">groen = correct nummer op de correcte positie</li>
-            </ul>
+          <h2>Code guesser - module 1</h2>
+          <p>
+            je hebt <span class="AttemptAantal">10</span> pogingen om een code
+            in te voeren. na elke poging krijg je te zien:
+          </p>
+          <ul>
+            <li class="red">rood = fout nummer</li>
+            <li class="orange">
+              oranje = correct nummer maar niet op de goeie positie
+            </li>
+            <li class="green">groen = correct nummer op de correcte positie</li>
+          </ul>
         </section>
-    </div>
-    <div class="module2 obstructModule ">
+      </div>
+      <div class="module2 obstructModule">
         <div class="arrayleft">
-            <div>
-                <p class="slot1"></p> <p class="slotText">slot1</p>
-            </div>
-            <div>
-                <p class="slot2"></p> <p class="slotText">slot2</p>
-            </div>
-            <div>
-                <p class="slot3"></p> <p class="slotText">slot3</p>
-            </div>
-            <div>
-                <p class="slot4"></p> <p class="slotText">slot4</p>
-            </div>
+          <div>
+            <p class="slot1"></p>
+            <p class="slotText">slot1</p>
+          </div>
+          <div>
+            <p class="slot2"></p>
+            <p class="slotText">slot2</p>
+          </div>
+          <div>
+            <p class="slot3"></p>
+            <p class="slotText">slot3</p>
+          </div>
+          <div>
+            <p class="slot4"></p>
+            <p class="slotText">slot4</p>
+          </div>
         </div>
         <div class="hintmenu">
-            <h3>Als <strong class="blauw">Blauw draad</strong> op</h3>
-            <ul>
-              <li>slot 1 zit, dan als laatste knippen</li>
-              <li>slot 2 zit, Knip dan als eerste</li>
-              <li>slot 3 zit, knip als derde.</li>
-              <li>slop 4 zit, als tweede doorknippen.</li>
-            </ul>
-            <h3>Als <strong class="groen">Groen draad</strong> op</h3>
-            <ul>
-              <li>slot 1 zit, als tweede doorknippen.</li>
-              <li>slot 2 zit, knip als derde.</li>
-              <li>slot 3 zit, dan als laatste knippen</li>
-              <li>slop 4 zit, knip dan als eerste</li>
-            </ul> 
-            <h3>Als <strong class="rood">Rood draad</strong> op</h3>
-            <ul>
-              <li>slot 1 zit, knip als derde.</li>
-              <li>slot 2 zit, als tweede doorknippen. </li>
-              <li>slot 3 zit, knip dan als eerste </li>
-              <li>slop 4 zit, dan als laatste knippen</li>
-            </ul>
-            <h3>Als <strong class="zwart">Zwart draad</strong> op</h3>
-            <ul>
-              <li>slot 1 zit, knip dan als eerste </li>
-              <li>slop 2 zit, dan als laatste knippen</li>
-              <li>slot 3 zit, als tweede doorknippen. </li>
-              <li>slot 4 zit, knip als derde.</li>
-            </ul>
+          <h3>Als <strong class="blauw">Blauw draad</strong> op</h3>
+          <ul>
+            <li>slot 1 zit, dan als laatste knippen</li>
+            <li>slot 2 zit, Knip dan als eerste</li>
+            <li>slot 3 zit, knip als derde.</li>
+            <li>slop 4 zit, als tweede doorknippen.</li>
+          </ul>
+          <h3>Als <strong class="groen">Groen draad</strong> op</h3>
+          <ul>
+            <li>slot 1 zit, als tweede doorknippen.</li>
+            <li>slot 2 zit, knip als derde.</li>
+            <li>slot 3 zit, dan als laatste knippen</li>
+            <li>slop 4 zit, knip dan als eerste</li>
+          </ul>
+          <h3>Als <strong class="rood">Rood draad</strong> op</h3>
+          <ul>
+            <li>slot 1 zit, knip als derde.</li>
+            <li>slot 2 zit, als tweede doorknippen.</li>
+            <li>slot 3 zit, knip dan als eerste</li>
+            <li>slop 4 zit, dan als laatste knippen</li>
+          </ul>
+          <h3>Als <strong class="zwart">Zwart draad</strong> op</h3>
+          <ul>
+            <li>slot 1 zit, knip dan als eerste</li>
+            <li>slop 2 zit, dan als laatste knippen</li>
+            <li>slot 3 zit, als tweede doorknippen.</li>
+            <li>slot 4 zit, knip als derde.</li>
+          </ul>
         </div>
-    </div>
-    <div class="startscreen">
+      </div>
+      <div class="startscreen">
         <h1>Ticking Time Trials!</h1>
-        <p>Welkom bij mijn spel. Het doel is om een bom te ontmantelen door 2 modules te voltooien.</p>
-        <p>De eerste is het raden van een geheime code van 4 cijfers. En bij de tweede moet je 4 gekleurde draden op volgorde doorknippen. De volgorde waarin u knipt, wordt bepaald door de kleur en positie van elk van hen. <strong>Lees de meegeleverde instructies aandachtig!</strong> </p>
+        <p>
+          Welkom bij mijn spel. Het doel is om een bom te ontmantelen door 2
+          modules te voltooien.
+        </p>
+        <p>
+          De eerste is het raden van een geheime code van 4 cijfers. En bij de
+          tweede moet je 4 gekleurde draden op volgorde doorknippen. De volgorde
+          waarin u knipt, wordt bepaald door de kleur en positie van elk van
+          hen. <strong>Lees de meegeleverde instructies aandachtig!</strong>
+        </p>
         <h2>Stel hier de hoeveelheid tijd voor uw bom in!</h2>
         <div class="timeSelect">
-            <button class="minutes15" value="300">05:00</button>
-            <button class="minutes10" value="150">02:30</button>
-            <button class="minutes5" value="60">01:00</button>
+          <button class="minutes15" value="300">05:00</button>
+          <button class="minutes10" value="150">02:30</button>
+          <button class="minutes5" value="60">01:00</button>
         </div>
         <button class="startbutton obstructModule">Start bom</button>
-    </div>
-    <button class="sound"><img class="musicButton" src="images/pause_button.png" alt=""></button>
+      </div>
+      <button class="sound">
+        <img class="musicButton" src="images/pause_button.png" alt="" />
+      </button>
     </main>
     <script src="script.js"></script>
-
-</body>
-
+  </body>
 </html>
