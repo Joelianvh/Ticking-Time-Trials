@@ -428,9 +428,6 @@ h3{
 .kaboom{
     background: linear-gradient(black, red);
 }
-.nonInteraction{
-    pointer-events: none;
-}
 .lowTime{
     width: 100%;
     height: 100%;

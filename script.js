@@ -185,6 +185,7 @@ const Geheimnummer2 = Math.floor(Math.random() * 10);
 const Geheimnummer3 = Math.floor(Math.random() * 10);
 const Geheimnummer4 = Math.floor(Math.random() * 10); 
 
+/* Dit hieronder zorgt ervoor dat de nummers als een string worden neergezet naast elkaar en niet als een value */
 const oplossing = `${Geheimnummer1}${Geheimnummer2}${Geheimnummer3}${Geheimnummer4}`;
 
 console.log("De geheime code is: " + oplossing); /* om te zien wat het antwoord is in de console */
@@ -843,19 +844,15 @@ function slot1wiresCheck() {
   if (slot1.textContent == "A") {
     wireCountDown = wireCountDown - 1;
     slot1img.src = "images/zwartdraad_knip.png";
-    completeWiresCheck();
   } else if (slot1.textContent == "B" && wireCountDown == 3) {
     wireCountDown = wireCountDown - 1;
     slot1img.src = "images/groendraad_knip.png";
-    completeWiresCheck();
   } else if (slot1.textContent == "C" && wireCountDown == 2) {
     wireCountDown = wireCountDown - 1;
     slot1img.src = "images/rooddraad_knip.png";
-    completeWiresCheck();
   } else if (slot1.textContent == "D" && wireCountDown == 1) {
     wireCountDown = wireCountDown - 1;
     slot1img.src = "images/blauwdraad_knip.png";
-    completeWiresCheck();
   } else {
     AttemptsLeft = 0;
   }
@@ -865,19 +862,15 @@ function slot2wiresCheck() {
   if (slot2.textContent == "A") {
     wireCountDown = wireCountDown - 1;
     slot2img.src = "images/blauwdraad_knip.png";
-    completeWiresCheck();
   } else if (slot2.textContent == "B" && wireCountDown == 3) {
     wireCountDown = wireCountDown - 1;
     slot2img.src = "images/rooddraad_knip.png";
-    completeWiresCheck();
   } else if (slot2.textContent == "C" && wireCountDown == 2) {
     wireCountDown = wireCountDown - 1;
     slot2img.src = "images/groendraad_knip.png";
-    completeWiresCheck();
   } else if (slot2.textContent == "D" && wireCountDown == 1) {
     wireCountDown = wireCountDown - 1;
     slot2img.src = "images/zwartdraad_knip.png";
-    completeWiresCheck();
   } else {
     AttemptsLeft = 0;
   }
@@ -886,19 +879,15 @@ function slot3wiresCheck() {
   if (slot3.textContent == "A") {
     wireCountDown = wireCountDown - 1;
     slot3img.src = "images/rooddraad_knip.png";
-    completeWiresCheck();
   } else if (slot3.textContent == "B" && wireCountDown == 3) {
     wireCountDown = wireCountDown - 1;
     slot3img.src = "images/zwartdraad_knip.png";
-    completeWiresCheck();
   } else if (slot3.textContent == "C" && wireCountDown == 2) {
     wireCountDown = wireCountDown - 1;
     slot3img.src = "images/blauwdraad_knip.png";
-    completeWiresCheck();
   } else if (slot3.textContent == "D" && wireCountDown == 1) {
     wireCountDown = wireCountDown - 1;
     slot3img.src = "images/groendraad_knip.png";
-    completeWiresCheck();
   } else {
     AttemptsLeft = 0;
   }
@@ -907,19 +896,15 @@ function slot4wiresCheck() {
   if (slot4.textContent == "A") {
     wireCountDown = wireCountDown - 1;
     slot4img.src = "images/groendraad_knip.png";
-    completeWiresCheck();
   } else if (slot4.textContent == "B" && wireCountDown == 3) {
     wireCountDown = wireCountDown - 1;
     slot4img.src = "images/blauwdraad_knip.png";
-    completeWiresCheck();
   } else if (slot4.textContent == "C" && wireCountDown == 2) {
     wireCountDown = wireCountDown - 1;
     slot4img.src = "images/zwartdraad_knip.png";
-    completeWiresCheck();
   } else if (slot4.textContent == "D" && wireCountDown == 1) {
     wireCountDown = wireCountDown - 1;
     slot4img.src = "images/rooddraad_knip.png";
-    completeWiresCheck();
   } else {
     AttemptsLeft = 0;
   }
